@@ -1,4 +1,4 @@
 
 class Global:
 
-    DEBUG = True
+    DEBUG = False

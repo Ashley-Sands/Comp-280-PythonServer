@@ -92,7 +92,17 @@ class ServerRequestDatabase(server_request.ServerRequest):
         # appending it to row_data as a json str.
         for r in results:
             row = dict(zip(self.table_col_names, r))
+
+            # check if the data starts with '{' if it does it need to be parshed into its own dict
+            for key in row:
+                # check that the row key does not start with { and ends in }
+                if str(row[key])[0] == "{" and str(row[key])[-1] == "}":
+                    row[key] = json.loads( row[key].replace("'", '"') )
+
             row_data.append( json.dumps( row ) )
+
+            if Global.DEBUG:
+                print("ADD: ", row_data[-1])
 
         if len(row_data) == 0:
             return "Error: No Data"

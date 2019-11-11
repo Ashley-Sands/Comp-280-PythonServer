@@ -124,7 +124,4 @@ class sql_query():
 
         self.cursor.execute(query, where_data)
 
-
-
         self.close_db()
-
