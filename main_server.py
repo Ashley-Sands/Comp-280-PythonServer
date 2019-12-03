@@ -64,7 +64,7 @@ class Server(BaseHTTPRequestHandler):
         print(dir_root, path, callbacks)
 
         # remove all trailing '/' if any
-        while path[-1] == "/":
+        while len(path) > 0 and path[-1] == "/":
             path = path[:-1]
 
         if dir_root in callbacks:
