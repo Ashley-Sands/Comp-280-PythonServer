@@ -91,6 +91,19 @@ class sql_query():
 
         print("Table Created")
 
+    def drop_table(self, table_name):
+
+        if not self.table_exist( table_name ):
+            print("Error: can not drop table, that does not already exist")
+            return
+
+        self.connect_db()
+
+        query = "DROP TABLE " + table_name
+        self.cursor.execute(query)
+
+        self.close_db()
+
     def insert_row(self, table_name, col_names, row_data):
 
         if not self.table_exist(table_name):

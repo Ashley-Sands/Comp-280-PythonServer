@@ -90,6 +90,8 @@ sql.add_table("test_users_2", "name VARCHAR(155), email VARCHAR(255), age INT, p
 
 sql.get_all_tables()
 sql.get_table_columns("test_users")
+sql.drop_table("test_users_2")
+sql.get_all_tables()
 
 sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Gizzmo", "a@b.c", "28", "12345678901") )
 sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Gizzmo", "a@b.c", "28", "12345678901") )
