@@ -86,6 +86,11 @@ print("------------------------- START TESTING --------------------------")
 
 sql = sql_query.sql_query("test_db")
 sql.add_table("test_users", "name VARCHAR(155), email VARCHAR(255), age INT, phonenumber VARCHAR(255)")
+sql.add_table("test_users_2", "name VARCHAR(155), email VARCHAR(255), age INT, phonenumber VARCHAR(255)")
+
+sql.get_all_tables()
+sql.get_table_columns("test_users")
+
 sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Gizzmo", "a@b.c", "28", "12345678901") )
 sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Gizzmo", "a@b.c", "28", "12345678901") )
 sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Ashley", "a@b.c", "28", "12345678901") )

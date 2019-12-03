@@ -9,14 +9,54 @@ class sql_query():
         self.cursor = None
 
     def connect_db(self):
-        # connect to the DB to check it exist and close the connect so other application can use the db.
+        """ Connect to the SQLite DB, creates new if not exist """
         self.connection = sqlite3.connect(self.db_name)
         self.cursor = self.connection.cursor()
 
     def close_db(self, commit = True):
+        """Closes the db connection"""
         if commit:
             self.connection.commit()
         self.connection.close()
+
+    def get_all_tables(self):
+        """ Gets an list of tuples with all table names in database
+
+        :return: list of tuples with table names [(table_name, )...]
+        """
+        query = "SELECT name FROM sqlite_master WHERE type='table'"
+
+        self.connect_db()
+
+        self.cursor.execute(query)
+        data = self.cursor.fetchall()
+        row_count = len(data)
+
+        print(row_count, data)
+
+        self.close_db()
+
+        return data
+
+    def get_table_columns(self, table_name):
+        """ Gets a list of tuples with all column data for table
+
+        :param table_name:  table to get column data from
+        :return:            [(col_id, col_name, type, can_be_null, default_value, part_of_primary_key)...]
+        """
+        query = "pragma table_info("+table_name+")"
+
+        self.connect_db()
+
+        self.cursor.execute(query)
+        data = self.cursor.fetchall()
+        row_count = len(data)
+
+        print(row_count, data)
+
+        self.close_db()
+
+        return data
 
     def table_exist(self, table_name, close_connect = True):
 
