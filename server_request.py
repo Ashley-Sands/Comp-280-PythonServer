@@ -24,4 +24,15 @@ class ServerRequest:
         """
         return 404, "Error: Not Found"
 
+    def new_response(self, status, response):
+        """Creates a new response read for json convert
+        :param status:      status code ie 200 or 404
+        :param response:    the responce data
+        :return:            a dict of response data {status, response}
+        """
+        response_dict = {}
+        response_dict["Status"] = status
+        response_dict["response"] = response
+
+        return response_dict
 
