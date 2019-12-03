@@ -22,7 +22,7 @@ class sql_query():
     def get_all_tables(self):
         """ Gets an list of tuples with all table names in database
 
-        :return: list of tuples with table names [(table_name, )...]
+        :return: list of table names [table_name, ...]
         """
         query = "SELECT name FROM sqlite_master WHERE type='table'"
 
@@ -30,9 +30,10 @@ class sql_query():
 
         self.cursor.execute(query)
         data = self.cursor.fetchall()
-        row_count = len(data)
 
-        print(row_count, data)
+        # clean the data removing the inner list of 1 element
+        for i in range (len(data)):
+            data[i] = data[i][0]
 
         self.close_db()
 
