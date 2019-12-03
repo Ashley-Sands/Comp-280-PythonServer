@@ -15,12 +15,15 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
         :param data:            data that has been posted
         :return: (int [status], str [responce] )
         """
-
+        print(page_request)
         response_data = self.new_response( 404, "Error: Not Found" )
         json_response = None
 
         if page_request == "/open_database":
             response_data = self.open_database(data)
+        elif page_request == "/new_database":
+            response_data = self.new_database(data)
+
 
         json_response = json.dumps(response_data)
         print(json_response)
@@ -41,7 +44,7 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
             response_data = self.open_database(query)
 
         json_response = json.dumps(response_data)
-        print(json_response, "fadsfads", query)
+        print(json_response, query)
 
         return response_data["status"], json_response
 
@@ -54,4 +57,13 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
         else:
             return self.new_response( 404, "Error: Database not found" )
 
+    def new_database(self, database_name):
+
+        if not Help.file_exist(database_name):
+            database = sql(database_name)
+            database.connect_db()
+            database.close_db()
+            return self.new_response(200, "Success")
+        else:
+            return self.new_response(404, "Error: Already Exist")
 

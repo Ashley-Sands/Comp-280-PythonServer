@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="044511c4-2dcb-4859-9534-58b30bfe7690" name="Default Changelist" comment="">
+    <list default="true" id="044511c4-2dcb-4859-9534-58b30bfe7690" name="Default Changelist" comment="Initial commit for ServerRequest for AMSql Explorer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_request_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_request_database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/sql_query.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_request_amsql_explorer.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_request_amsql_explorer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_db" beforeDir="false" afterPath="$PROJECT_DIR$/test_db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-19.0.3-py3.7.egg/pip/_vendor/pyparsing.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip-19.0.3-py3.7.egg/pip/_vendor/pyparsing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-19.0.3-py3.7.egg/pip/_vendor/requests/_internal_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip-19.0.3-py3.7.egg/pip/_vendor/requests/_internal_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/pip-19.0.3-py3.7.egg/pip/_vendor/urllib3/contrib/_securetransport/low_level.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/pip-19.0.3-py3.7.egg/pip/_vendor/urllib3/contrib/_securetransport/low_level.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -173,7 +174,84 @@
       <option name="project" value="LOCAL" />
       <updated>1575396737202</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added Drop table :)">
+      <created>1575397869913</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1575397869913</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Initial commit for ServerRequest for AMSql Explorer">
+      <created>1575398235455</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1575398235455</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added doc strings">
+      <created>1575400471116</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1575400471116</updated>
+    </task>
+    <task id="LOCAL-00009" summary="added helper function to check if files exist">
+      <created>1575401104992</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1575401104992</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fixed crash when the len of path was 0">
+      <created>1575402898684</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1575402898684</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Initial commit for ServerRequest for AMSql Explorer">
+      <created>1575403478016</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1575403478016</updated>
+    </task>
+    <task id="LOCAL-00012" summary="renamed">
+      <created>1575404106706</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1575404106706</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added some new test tables">
+      <created>1575404302726</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1575404302726</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Fixed typo">
+      <created>1575404325156</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1575404325156</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Changed get all tables to clean up the data">
+      <created>1575404358944</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1575404358944</updated>
+    </task>
+    <task id="LOCAL-00016" summary="added status to return">
+      <created>1575404400029</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1575404400030</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView">
@@ -205,7 +283,17 @@
     <MESSAGE value="db stuff" />
     <MESSAGE value="Changed so that the first seg of path is the key for the callbacks&#10;&#10;this fixes a minor issue of inconsistency, where multiple callbacks can be triggered with a single request&#10;which makes life hard when debugging since the request could be handled by two different callbacks at the same time :(" />
     <MESSAGE value="Added Get all tables and Get table columns" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Get all tables and Get table columns" />
+    <MESSAGE value="Added Drop table :)" />
+    <MESSAGE value="added doc strings" />
+    <MESSAGE value="added helper function to check if files exist" />
+    <MESSAGE value="Fixed crash when the len of path was 0" />
+    <MESSAGE value="Initial commit for ServerRequest for AMSql Explorer" />
+    <MESSAGE value="renamed" />
+    <MESSAGE value="Added some new test tables" />
+    <MESSAGE value="Fixed typo" />
+    <MESSAGE value="Changed get all tables to clean up the data" />
+    <MESSAGE value="added status to return" />
+    <option name="LAST_COMMIT_MESSAGE" value="added status to return" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Comp_280__2_$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1572014137730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
