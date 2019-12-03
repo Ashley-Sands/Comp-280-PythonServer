@@ -59,7 +59,7 @@ class sql_query():
         return data
 
     def table_exist(self, table_name, close_connect = True):
-
+        """Check if table exist in database"""
         query = "SELECT name FROM sqlite_master WHERE type='table' AND name=? "
 
         self.connect_db()
@@ -77,7 +77,7 @@ class sql_query():
     @:param col_names: col string
     '''
     def add_table(self, table_name, col_names):
-
+        """Adds new table to database"""
         if self.table_exist( table_name ):
             print("Error: can not create table, already exist")
             return
@@ -92,7 +92,7 @@ class sql_query():
         print("Table Created")
 
     def drop_table(self, table_name):
-
+        """drops table from database"""
         if not self.table_exist( table_name ):
             print("Error: can not drop table, that does not already exist")
             return
@@ -105,7 +105,7 @@ class sql_query():
         self.close_db()
 
     def insert_row(self, table_name, col_names, row_data):
-
+        """Inserts rot into table"""
         if not self.table_exist(table_name):
             print("Error: can not insert row into table, table does not exist")
             return
@@ -125,7 +125,7 @@ class sql_query():
         print("data Inserted to table")
 
     def remove_row(self, table_name, where_str, where_data):
-
+        """removerow from table"""
         if not self.table_exist(table_name):
             print("Error: can not delete row from table, table does not exist")
             return
@@ -142,7 +142,7 @@ class sql_query():
         self.close_db()
 
     def select_from_table(self, table_name, cols_str, where_str, where_data =""):
-
+        """Selects rows of data from table"""
         if not self.table_exist(table_name):
             print("Error: can not select from table, table does not exist")
             return
@@ -164,7 +164,7 @@ class sql_query():
         return data
 
     def update_row(self, table_name, set_str, where_str, where_data ):
-
+        """Updates data in row"""
         if not self.table_exist(table_name):
             print("Error: can not update row in table, table does not exist")
             return
