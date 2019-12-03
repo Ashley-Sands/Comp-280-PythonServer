@@ -31,7 +31,7 @@ class ServerRequest:
         :return:            a dict of response data {status, response}
         """
         response_dict = {}
-        response_dict["Status"] = status
+        response_dict["status"] = status
         response_dict["response"] = response
 
         return response_dict
