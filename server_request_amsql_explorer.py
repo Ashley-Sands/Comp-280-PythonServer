@@ -24,7 +24,7 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
 
         json_response = json.dumps(response_data)
         print(json_response)
-        return json_response
+        return response_data["status"], json_response
 
     def get_request(self, page_request, query):
         """
@@ -41,9 +41,9 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
             response_data = self.open_database(query)
 
         json_response = json.dumps(response_data)
-        print(json_response)
+        print(json_response, "fadsfads", query)
 
-        return json_response
+        return response_data["status"], json_response
 
     def open_database(self, database_name):
         """Opens database and responds with all table names"""
