@@ -4,6 +4,7 @@ import sql_query
 import json
 import server_request
 import server_request_database
+import server_request_amsql_explorer as amsql_explorer
 
 from Globals import Global
 
@@ -61,7 +62,7 @@ class Server(BaseHTTPRequestHandler):
         path = '/'.join( self.request.path.split("/")[2:] )
         path = "/" + path
 
-        print(dir_root, path, callbacks)
+        print(dir_root, path)
 
         # remove all trailing '/' if any
         while len(path) > 0 and path[-1] == "/":
@@ -87,6 +88,8 @@ print("------------------------- START TESTING --------------------------")
 sql = sql_query.sql_query("test_db")
 sql.add_table("test_users", "name VARCHAR(155), email VARCHAR(255), age INT, phonenumber VARCHAR(255)")
 sql.add_table("test_users_2", "name VARCHAR(155), email VARCHAR(255), age INT, phonenumber VARCHAR(255)")
+sql.add_table("test_users_3", "name VARCHAR(155), email VARCHAR(255), age INT, phonenumber VARCHAR(255)")
+sql.add_table("test_users_4", "name VARCHAR(155), email VARCHAR(255), age INT, phonenumber VARCHAR(255)")
 
 sql.get_all_tables()
 sql.get_table_columns("test_users")
@@ -130,6 +133,10 @@ game_data_request = server_request_database.ServerRequestDatabase("cube_killer",
 
 Server.post_callbacks["game"] = game_data_request.post_request
 Server.get_callbacks["game"]  = game_data_request.get_request
+
+AMSql = amsql_explorer.ServerRequest_AMSqlExplorer()
+Server.post_callbacks["amsql"] = AMSql.post_request
+Server.get_callbacks["amsql"]  = AMSql.get_request
 
 server = HTTPServer( (host, port), Server )
 
