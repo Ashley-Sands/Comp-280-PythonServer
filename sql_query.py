@@ -1,16 +1,22 @@
 import sqlite3
 from Globals import Global
+from Globals import GlobalConfig as Config
 
 class sql_query():
 
     def __init__(self, db_name):
+
+        # make sure that the db root is set
+        if not Config.is_set( "db_root" ):
+            Config.set("db_root", "")
+
         self.db_name = db_name
         self.connection = None
         self.cursor = None
 
     def connect_db(self):
         """ Connect to the SQLite DB, creates new if not exist """
-        self.connection = sqlite3.connect("databases/"+self.db_name)
+        self.connection = sqlite3.connect(Config.get("db_root")+self.db_name)
         self.cursor = self.connection.cursor()
 
     def close_db(self, commit = True):
