@@ -6,7 +6,12 @@ import server_request
 import server_request_database
 import server_request_amsql_explorer as amsql_explorer
 
-from Globals import Global
+from Globals import Global, GlobalConfig
+
+# config
+GlobalConfig.set("host", "127.0.0.1")
+GlobalConfig.set("port", 8000)
+GlobalConfig.set("db_root", "databases/")
 
 host = "127.0.0.1"
 port = 8000
@@ -138,7 +143,7 @@ AMSql = amsql_explorer.ServerRequest_AMSqlExplorer()
 Server.post_callbacks["amsql"] = AMSql.post_request
 Server.get_callbacks["amsql"]  = AMSql.get_request
 
-server = HTTPServer( (host, port), Server )
+server = HTTPServer( (GlobalConfig.get("host"), GlobalConfig.get("port")), Server )
 
 
 
