@@ -76,3 +76,14 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
         else:
             return self.new_response(404, "Error: Already Exist")
 
+    def get_column_names(self, database_name, table_name):
+
+        if not Help.file_exist(Config.get("db_root") + database_name):
+            database = sql(database_name)
+            if database.table_exist(table_name):
+                data = database.get_table_columns(table_name)
+                return self.new_response(200, data)
+            else:
+                return self.new_response(404, "Error: Table Exist")
+        else:
+            return self.new_response(404, "Error: Already Exist")
