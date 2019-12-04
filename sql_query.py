@@ -10,7 +10,7 @@ class sql_query():
 
     def connect_db(self):
         """ Connect to the SQLite DB, creates new if not exist """
-        self.connection = sqlite3.connect(self.db_name)
+        self.connection = sqlite3.connect("databases/"+self.db_name)
         self.cursor = self.connection.cursor()
 
     def close_db(self, commit = True):
