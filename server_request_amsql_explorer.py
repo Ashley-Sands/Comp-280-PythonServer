@@ -36,7 +36,8 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
 
         json_response = json.dumps(response_data)
         print(json_response)
-        return response_data["status"], json_response
+        #return response_data["status"], json_response
+        return 200, json_response
 
     def get_request(self, page_request, query):
         """
