@@ -106,6 +106,7 @@ sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Gizzmo"
 sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Ashley", "a@b.c", "28", "12345678901") )
 sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Ashley", "a@b.c", "28", "12345678901") )
 sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Ashleys", "a@b.c", "28", "12345678901") )
+sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Ashleys", "a@b.c", "29", "12345678901") )
 data = sql.select_from_table( "test_users", "*", "name=?", ("Ashley", ) )
 print(data)
 

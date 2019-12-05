@@ -148,7 +148,7 @@ class sql_query():
 
         self.close_db()
 
-    def select_from_table(self, table_name, cols_str, where_str, where_data =""):
+    def select_from_table(self, table_name, cols_str, where_str="", where_data =""):
         """Selects rows of data from table"""
         if not self.table_exist(table_name):
             print("Error: can not select from table, table does not exist")

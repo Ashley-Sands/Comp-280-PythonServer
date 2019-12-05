@@ -24,18 +24,22 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
         response_data = self.new_response( 404, "Error: Not Found" )
         json_response = None
         data = json.loads(data)
-        print(data)
+        print("in data", data)
+
+        print("table" in data)
 
         if page_request == "/open_database":
             response_data = self.open_database(data["database"])
         elif page_request == "/new_database":
             response_data = self.new_database(data["database"])
         elif "table" in data and page_request == "/column_names":
-            responce_data = self.get_column_names(data["database"], data["table"])
+            response_data = self.get_column_names(data["database"], data["table"])
+        elif "table" in data and page_request == "/table_rows":
+            response_data = self.get_all_table_rows(data["database"], data["table"])
 
 
         json_response = json.dumps(response_data)
-        print(json_response)
+        print("out data", json_response)
         #return response_data["status"], json_response
         return 200, json_response
 
@@ -79,12 +83,24 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
 
     def get_column_names(self, database_name, table_name):
 
-        if not Help.file_exist(Config.get("db_root") + database_name):
+        if Help.file_exist(Config.get("db_root") + database_name):
             database = sql(database_name)
             if database.table_exist(table_name):
                 data = database.get_table_columns(table_name)
                 return self.new_response(200, data)
             else:
-                return self.new_response(404, "Error: Table Exist")
+                return self.new_response(404, "Error: Table does not exist")
         else:
-            return self.new_response(404, "Error: Already Exist")
+            return self.new_response(404, "Error: Database does not exist")
+
+    def get_all_table_rows(self, db_name, table_name):
+
+        if Help.file_exist(Config.get("db_root") + db_name):
+            database = sql(db_name)
+            if database.table_exist(table_name):
+                data = database.select_from_table(table_name, "*")
+                return self.new_response(200, data)
+            else:
+                return self.new_response(404, "Error: Table does not exist")
+        else:
+            return self.new_response(404, "Error: Database does not exist")
