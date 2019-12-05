@@ -62,6 +62,24 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
 
         return response_data["status"], json_response
 
+    def database_and_table_exist(self, db_name, table_name):
+        """ checks if tables exists in database,
+
+        :param db_name:
+        :param table_name:
+        :return:            instance of database, or error response
+        """
+
+        if Help.file_exist(Config.get("db_root") + db_name):
+            database = sql(db_name)
+            if database.table_exist(table_name):
+                return database
+            else:
+                return self.new_response(404, "Error: Table does not exist")
+        else:
+            return self.new_response(404, "Error: Database does not exist")
+
+
     def open_database(self, database_name):
         """Opens database and responds with all table names"""
         if Help.file_exist(Config.get("db_root") + database_name):
@@ -106,12 +124,13 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
 
     def get_all_table_rows(self, db_name, table_name):
 
-        if Help.file_exist(Config.get("db_root") + db_name):
-            database = sql(db_name)
-            if database.table_exist(table_name):
-                data = database.select_from_table(table_name, "rowid, *")
-                return self.new_response(200, data)
-            else:
-                return self.new_response(404, "Error: Table does not exist")
+        database = self.database_and_table_exist(db_name, table_name)
+
+        if type(database) is sql:
+            data = database.select_from_table(table_name, "rowid, *")
+            return self.new_response(200, data)
         else:
-            return self.new_response(404, "Error: Database does not exist")
+            return database
+
+    def update_row(self, db_name, table_name, set_columns, set_data, where_columns, where_data):
+        pass
