@@ -170,11 +170,39 @@ class sql_query():
 
         return data
 
-    def update_row(self, table_name, set_str, where_str, where_data ):
-        """Updates data in row"""
+    def update_row(self, table_name, set_columns, set_data, where_columns, where_data ):
+        """ Updates table row
+
+        :param table_name:  Name of table to update
+        :param set_str:     list or tuple of columns to set
+        :param set_data:    list or tuple of data to set into columns (order must match set_str)
+        :param where_str:   list or tuple of wheres
+        :param where_data:  list or tuple of where data (order must match where_str)
+        :return:
+        """
         if not self.table_exist(table_name):
             print("Error: can not update row in table, table does not exist")
             return
+
+        set_str = ""
+        where_str = ""
+        data = (*set_data, *where_data)
+        # make set string
+        for s in set_columns:
+            set_str += s + "=? ,"
+
+        # clear end ','
+        if set_str[-1] == ",":
+            set_str = set_str[:-1]
+
+        # make where string
+        for w in where_columns:
+            where_str += w + "=? AND "  # NOTE: AND limitation
+
+        # clear end 'AND'
+        if where_str[-4:] == "AND ":
+            where_str = where_str[:-4]
+
 
         self.connect_db()
 
@@ -182,6 +210,6 @@ class sql_query():
 
         print( query )
 
-        self.cursor.execute(query, where_data)
+        self.cursor.execute(query, data)
 
         self.close_db()
