@@ -83,10 +83,21 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
 
     def get_column_names(self, database_name, table_name):
 
+        # check the db and table exist
         if Help.file_exist(Config.get("db_root") + database_name):
             database = sql(database_name)
             if database.table_exist(table_name):
+                # get all the column names
                 data = database.get_table_columns(table_name)
+
+                # add the editable value to the end of each row
+                for i in range(len(data)):
+                    data[i] = list(data[i])
+                    data[i].append(1)
+
+                # add the rowid column to the data (default column in sqlite)
+                data = [[-1, "rowid", "INT", 0, None, 1, 0], *data]
+
                 return self.new_response(200, data)
             else:
                 return self.new_response(404, "Error: Table does not exist")
@@ -98,7 +109,7 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
         if Help.file_exist(Config.get("db_root") + db_name):
             database = sql(db_name)
             if database.table_exist(table_name):
-                data = database.select_from_table(table_name, "*")
+                data = database.select_from_table(table_name, "rowid, *")
                 return self.new_response(200, data)
             else:
                 return self.new_response(404, "Error: Table does not exist")
