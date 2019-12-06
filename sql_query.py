@@ -173,11 +173,11 @@ class sql_query():
     def update_row(self, table_name, set_columns, set_data, where_columns, where_data ):
         """ Updates table row
 
-        :param table_name:  Name of table to update
-        :param set_str:     list or tuple of columns to set
-        :param set_data:    list or tuple of data to set into columns (order must match set_str)
-        :param where_str:   list or tuple of wheres
-        :param where_data:  list or tuple of where data (order must match where_str)
+        :param table_name:      Name of table to update
+        :param set_columns:     list or tuple of columns to set
+        :param set_data:        list or tuple of data to set into columns (order must match set_str)
+        :param where_columns:   list or tuple of wheres
+        :param where_data:      list or tuple of where data (order must match where_str)
         :return:
         """
         if not self.table_exist(table_name):
@@ -213,3 +213,20 @@ class sql_query():
         self.cursor.execute(query, data)
 
         self.close_db()
+
+
+
+if __name__ == "__main__":
+
+    sql = sql_query("databases/test_db")
+
+    while(1):
+        inp = input()
+        inp = inp.lower()
+        inp = inp.split(":")
+        print(inp)
+        if inp[0] == "exit":
+            exit()
+        elif inp[0] == "drop":
+            sql.drop_table(inp[1])
+            print("Droped")
