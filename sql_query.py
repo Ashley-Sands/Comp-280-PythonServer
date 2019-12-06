@@ -148,20 +148,26 @@ class sql_query():
 
         self.close_db()
 
-    def select_from_table(self, table_name, cols_str, where_str="", where_data =""):
+    def select_from_table(self, table_name, column_names, where_columns=[], where_data=[]):
         """Selects rows of data from table"""
         if not self.table_exist(table_name):
             print("Error: can not select from table, table does not exist")
             return
 
+        # turn the lists of column names into a usable sql string
+        col_str = self.sql_string_builder( column_names, ",", False )
+        where_str = self.sql_string_builder(where_columns, "AND ")
+
         self.connect_db()
 
-        if len(where_str) > 0:
+        if len(where_columns) > 0:
             where_str = " WHERE "+where_str
         else:
             where_str = ""
 
-        query = "SELECT " + cols_str + " FROM " + table_name + where_str
+        query = "SELECT " + col_str + " FROM " + table_name + where_str
+
+        print (query)
 
         self.cursor.execute( query, where_data )
         data = self.cursor.fetchall()

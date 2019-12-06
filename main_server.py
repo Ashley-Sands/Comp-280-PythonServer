@@ -112,13 +112,13 @@ sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Ashleys
 sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Ashleys", "a@b.c", "30", "12345678901") )
 
 
-data = sql.select_from_table( "test_users", "*", "name=?", ("Ashley", ) )
+data = sql.select_from_table( "test_users", ["*"], ["name"], ["Ashley"] )
 print(data)
 
-data = sql.select_from_table( "test_users", "*", "name=?", ("Gizzmo", ) )
+data = sql.select_from_table( "test_users", ["*"], ["name"], ["Gizzmo"] )
 print(data)
 sql.update_row("test_users", ["phonenumber"],  ["10987654321"], ["name"], ["Gizzmo"])
-data = sql.select_from_table( "test_users", "*", "name=?", ("Gizzmo", ) )
+data = sql.select_from_table( "test_users", ["*"], ["name"], ["Gizzmo"] )
 
 print("Total rows found ", len(data))
 print(data)
@@ -127,12 +127,12 @@ sql.get_table_columns("test_users_5")
 
 
 sql.remove_row( "test_users", "age=?", ("28", ) )
-data = sql.select_from_table( "test_users", "*", "" )
+data = sql.select_from_table( "test_users", ["*"] )
 
 print("Total rows left in table: ", len(data))
 
 # test getting the row id
-data = sql.select_from_table( "test_users", "rowid, *" )
+data = sql.select_from_table( "test_users", ["rowid", "*"] )
 print(data)
 
 print("------------------------- TESTING COMPLEATE --------------------------")
