@@ -198,20 +198,25 @@ class sql_query():
 
         self.close_db()
 
-    def sql_string_builder(self, column_names, join):
+    def sql_string_builder(self, column_names, join, add_equals=True):
         """ build a list of column names in to sql query string for set and where ect... """
 
-        str = ""
+        string = ""
+        if add_equals is True:
+            equals = "=? "
+        else:
+            equals = " "
 
         # make column string
         for s in column_names:
-            str += s + "=? "+join
+            string += s + equals + join
 
         # clear end ','
-        if str[-len(join):] == ",":
-            set_str = str[:-len(join)]
+        if string[-len(join):] == join:
+            string = string[:-len(join)]
 
-        return str
+        return string
+
 
 if __name__ == "__main__":
 
