@@ -32,11 +32,14 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
             response_data = self.open_database(data["database"])
         elif page_request == "/new_database":
             response_data = self.new_database(data["database"])
-        elif "table" in data and page_request == "/column_names":
+        elif page_request == "/column_names" and Help.check_keys(data, ["table"]) :
             response_data = self.get_column_names(data["database"], data["table"])
-        elif "table" in data and page_request == "/table_rows":
+        elif page_request == "/table_rows" and Help.check_keys(data, ["table"]) :
             response_data = self.get_all_table_rows(data["database"], data["table"])
-
+        elif page_request == "/drop_table" and Help.check_keys(data, ["table"]):
+            response_data = self.drop_table( data["database"], data["table"] )
+        elif page_request == "/update_row" and Help.check_keys(data, ["table", "set_columns", "set_data", "where_columns", "where_data"]):
+            response_data = self.update_row(data["database"], data["table"], data["set_columns"], data["set_data"], data["where_columns"], data["where_data"])
 
         json_response = json.dumps(response_data)
         print("out data", json_response)
@@ -99,28 +102,26 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
         else:
             return self.new_response(404, "Error: Already Exist")
 
-    def get_column_names(self, database_name, table_name):
+    def get_column_names(self, db_name, table_name):
 
         # check the db and table exist
-        if Help.file_exist(Config.get("db_root") + database_name):
-            database = sql(database_name)
-            if database.table_exist(table_name):
-                # get all the column names
-                data = database.get_table_columns(table_name)
+        database = self.database_and_table_exist(db_name, table_name)
 
-                # add the editable value to the end of each row
-                for i in range(len(data)):
-                    data[i] = list(data[i])
-                    data[i].append(1)
+        if type(database) is sql:
+            # get all the column names
+            data = database.get_table_columns(table_name)
 
-                # add the rowid column to the data (default column in sqlite)
-                data = [[-1, "rowid", "INT", 0, None, 1, 0], *data]
+            # add the editable value to the end of each row
+            for i in range(len(data)):
+                data[i] = list(data[i])
+                data[i].append(1)
 
-                return self.new_response(200, data)
-            else:
-                return self.new_response(404, "Error: Table does not exist")
+            # add the rowid column to the data (default column in sqlite)
+            data = [[-1, "rowid", "INT", 0, None, 1, 0], *data]
+
+            return self.new_response(200, data)
         else:
-            return self.new_response(404, "Error: Database does not exist")
+            return database
 
     def get_all_table_rows(self, db_name, table_name):
 
@@ -133,4 +134,29 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
             return database
 
     def update_row(self, db_name, table_name, set_columns, set_data, where_columns, where_data):
-        pass
+        """
+
+        :param db_name:         name of database
+        :param table_name:      name of table to update
+        :param set_columns:     list of column names to be updated
+        :param set_data:        list of data (must match set_columns)
+        :param where_columns:   list of where columns
+        :param where_data:      list of where data (must match where_columns)
+        :return:                returns status
+        """
+        database = self.database_and_table_exist(db_name, table_name)
+
+        if type(database) is sql:
+            database.update_row(table_name, set_columns, set_data, where_columns, where_data)
+            return self.new_response(200, "success")
+        else:
+            return database
+
+    def drop_table(self, db_name, table_name):
+        database = self.database_and_table_exist(db_name, table_name)
+
+        if type(database) is sql:
+            database.drop_table( table_name )
+            return self.new_response(200, "success")
+        else:
+            return database
