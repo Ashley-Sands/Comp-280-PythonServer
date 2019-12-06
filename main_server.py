@@ -90,6 +90,10 @@ class Server(BaseHTTPRequestHandler):
 
 print("------------------------- START TESTING --------------------------")
 
+sql_destroy = sql_query.sql_query("test_db_destroy")
+sql_destroy.add_table("Helloo_World", "helloo VARCHAR(255), world INT")
+sql_destroy.destroy_database()
+
 sql = sql_query.sql_query("test_db")
 sql.add_table("test_users", "name VARCHAR(155), email VARCHAR(255), age INT, phonenumber VARCHAR(255)")
 sql.add_table("test_users_2", "name VARCHAR(155), email VARCHAR(255), age INT, phonenumber VARCHAR(255)")
@@ -111,7 +115,6 @@ sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Ashleys
 sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Ashleys", "a@b.c", "29", "12345678901") )
 sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Ashleys", "a@b.c", "30", "12345678901") )
 
-
 data = sql.select_from_table( "test_users", ["*"], ["name"], ["Ashley"] )
 print(data)
 
@@ -126,7 +129,7 @@ print(data)
 sql.get_table_columns("test_users_5")
 
 
-sql.remove_row( "test_users", "age=?", ("28", ) )
+sql.remove_row( "test_users", ["age"], ["28"] )
 data = sql.select_from_table( "test_users", ["*"] )
 
 print("Total rows left in table: ", len(data))

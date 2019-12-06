@@ -1,6 +1,7 @@
 import sqlite3
 from Globals import Global
 from Globals import GlobalConfig as Config
+import os, os.path
 
 class sql_query():
 
@@ -18,6 +19,11 @@ class sql_query():
         """ Connect to the SQLite DB, creates new if not exist """
         self.connection = sqlite3.connect(Config.get("db_root")+self.db_name)
         self.cursor = self.connection.cursor()
+
+    def destroy_database(self):
+
+        if os.path.exists( Config.get("db_root")+self.db_name ):
+            os.remove( Config.get("db_root")+self.db_name )
 
     def close_db(self, commit = True):
         """Closes the db connection"""
@@ -131,11 +137,13 @@ class sql_query():
 
         print("data Inserted to table")
 
-    def remove_row(self, table_name, where_str, where_data):
+    def remove_row(self, table_name, where_columns, where_data):
         """removerow from table"""
         if not self.table_exist(table_name):
             print("Error: can not delete row from table, table does not exist")
             return
+
+        where_str = self.sql_string_builder( where_columns, "AND " )
 
         self.connect_db()
 
