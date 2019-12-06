@@ -15,3 +15,18 @@ class Helpers:
             full_path = path + "/" + file_name
 
         return os.path.isfile( full_path )
+
+    @staticmethod
+    def check_keys(dict_, keys):
+        """ search dict for all keys provided
+
+        :param dict_:   dict to search
+        :param keys:    keys to search for
+        :return:        false if any key does not exist
+        """
+
+        for k in keys:
+            if k not in dict_:
+                return False
+
+        return True
