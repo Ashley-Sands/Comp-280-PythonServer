@@ -1,0 +1,33 @@
+import unittest
+from sql_query import sql_query
+from helpers import Helpers as Help
+
+class TestSqlQuery( unittest.TestCase ):
+
+    root_dir = "databases/"
+
+    def test_new_database_is_created(self):
+
+        db_name = self.root_dir + "test_creatAndDestroy_db"
+
+        sql = sql_query(db_name)
+        # open and close the database
+        sql.connect_db()
+        sql.close_db()
+
+        # does it exist?
+        self.assertTrue( Help.file_exist(db_name) )
+
+        sql.destroy_database()
+
+        # has it been destroyed
+        self.assertFalse( Help.file_exist( db_name ) )
+
+    def test_row_is_added_and_removed(self):
+        pass
+
+    def test_table_is_created_and_dropped(self):
+        pass
+
+if __name__ == "__main__":
+    unittest.main()
