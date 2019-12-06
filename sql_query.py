@@ -184,25 +184,9 @@ class sql_query():
             print("Error: can not update row in table, table does not exist")
             return
 
-        set_str = ""
-        where_str = ""
+        set_str = self.sql_string_builder(set_columns, ",")
+        where_str = self.sql_string_builder(where_columns, "AND ")
         data = (*set_data, *where_data)
-        # make set string
-        for s in set_columns:
-            set_str += s + "=? ,"
-
-        # clear end ','
-        if set_str[-1] == ",":
-            set_str = set_str[:-1]
-
-        # make where string
-        for w in where_columns:
-            where_str += w + "=? AND "  # NOTE: AND limitation
-
-        # clear end 'AND'
-        if where_str[-4:] == "AND ":
-            where_str = where_str[:-4]
-
 
         self.connect_db()
 
@@ -214,7 +198,20 @@ class sql_query():
 
         self.close_db()
 
+    def sql_string_builder(self, column_names, join):
+        """ build a list of column names in to sql query string for set and where ect... """
 
+        str = ""
+
+        # make column string
+        for s in column_names:
+            str += s + "=? "+join
+
+        # clear end ','
+        if str[-len(join):] == ",":
+            set_str = str[:-len(join)]
+
+        return str
 
 if __name__ == "__main__":
 
