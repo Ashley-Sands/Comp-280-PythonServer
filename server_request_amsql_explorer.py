@@ -42,6 +42,8 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
             response_data = self.update_row(data["database"], data["table"], data["set_columns"], data["set_data"], data["where_columns"], data["where_data"])
         elif page_request == "/remove_row" and Help.check_keys(data, ["table", "where_columns", "where_data"]):
             response_data = self.remove_row_from_table(data["database"], data["table"], data["where_columns"], data["where_data"])
+        elif page_request == "/insert_row" and Help.check_keys(data, ["table", "value_columns", "value_data"]):
+            response_data = self.insert_row(data["database"], data["table"], data["value_columns"], data["value_data"])
 
         json_response = json.dumps(response_data)
         print("out data", json_response)
@@ -150,6 +152,15 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
 
         if type(database) is sql:
             database.update_row(table_name, set_columns, set_data, where_columns, where_data)
+            return self.new_response(200, "success")
+        else:
+            return database
+
+    def insert_row(self, db_name, table_name, value_columns, value_data):
+        database = self.database_and_table_exist(db_name, table_name)
+
+        if type(database) is sql:
+            database.insert_row(table_name, value_columns, value_data)
             return self.new_response(200, "success")
         else:
             return database
