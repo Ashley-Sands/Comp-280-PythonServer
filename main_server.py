@@ -88,58 +88,8 @@ class Server(BaseHTTPRequestHandler):
         return status, response
 
 
-print("------------------------- START TESTING --------------------------")
-
-sql_destroy = sql_query.sql_query("test_db_destroy")
-sql_destroy.add_table("Helloo_World", "helloo VARCHAR(255), world INT")
-sql_destroy.destroy_database()
-
-sql = sql_query.sql_query("test_db")
-sql.add_table("test_users", "name VARCHAR(155), email VARCHAR(255), age INT, phonenumber VARCHAR(255)")
-sql.add_table("test_users_2", "name VARCHAR(155), email VARCHAR(255), age INT, phonenumber VARCHAR(255)")
-sql.add_table("test_users_3", "name VARCHAR(155), email VARCHAR(255), age INT, phonenumber VARCHAR(255)")
-sql.add_table("test_users_4", "name VARCHAR(155), email VARCHAR(255), age INT, phonenumber VARCHAR(255)")
-sql.add_table("test_users_5", "phoneNumber INT, email VARCHAR(255)")
-
-sql.get_all_tables()
-sql.get_table_columns("test_users")
-sql.drop_table("test_users_2")
-sql.drop_table("test_users_5")
-sql.get_all_tables()
-
-sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Gizzmo", "a@b.c", "28", "12345678901") )
-sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Gizzmo", "a@b.c", "28", "12345678901") )
-sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Ashley", "a@b.c", "28", "12345678901") )
-sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Ashley", "a@b.c", "28", "12345678901") )
-sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Ashleys", "a@b.c", "28", "12345678901") )
-sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Ashleys", "a@b.c", "29", "12345678901") )
-sql.insert_row( "test_users", ("name", "email", "age", "phonenumber"), ("Ashleys", "a@b.c", "30", "12345678901") )
-
-data = sql.select_from_table( "test_users", ["*"], ["name"], ["Ashley"] )
-print(data)
-
-data = sql.select_from_table( "test_users", ["*"], ["name"], ["Gizzmo"] )
-print(data)
-sql.update_row("test_users", ["phonenumber"],  ["10987654321"], ["name"], ["Gizzmo"])
-data = sql.select_from_table( "test_users", ["*"], ["name"], ["Gizzmo"] )
-
-print("Total rows found ", len(data))
-print(data)
-
-sql.get_table_columns("test_users_5")
-
-
-sql.remove_row( "test_users", ["age"], ["28"] )
-data = sql.select_from_table( "test_users", ["*"] )
-
-print("Total rows left in table: ", len(data))
-
-# test getting the row id
-data = sql.select_from_table( "test_users", ["rowid", "*"] )
-print(data)
-
-print("------------------------- TESTING COMPLEATE --------------------------")
-
+print("- Run Test.py to test sql_query ")
+print("- Starting...")
 # set up the request callbacks.
 request = server_request.ServerRequest();
 
@@ -161,9 +111,7 @@ Server.get_callbacks["amsql"]  = AMSql.get_request
 
 server = HTTPServer( (GlobalConfig.get("host"), GlobalConfig.get("port")), Server )
 
-
-
-print("Waiting on you request...")
+print("- Waiting on you request...")
 
 while True:
     server.serve_forever()
