@@ -117,7 +117,7 @@ class sql_query():
 
         self.close_db()
 
-    def insert_row(self, table_name, col_names, row_data):
+    def insert_row(self, table_name, value_columns, value_data):
         """Inserts rot into table"""
         if not self.table_exist(table_name):
             print("Error: can not insert row into table, table does not exist")
@@ -125,13 +125,13 @@ class sql_query():
 
         self.connect_db()
 
-        col_name_str = ', '.join( col_names )
-        col_value_str = ', '.join( ["?"] * len(row_data) )
+        col_name_str = ', '.join(value_columns)
+        col_value_str = ', '.join(["?"] * len(value_data))
 
         query = "INSERT INTO " + table_name + " (" + col_name_str + ") VALUES (" + col_value_str + ") "
         if Global.DEBUG:
-            print("query: ", query, "Data", row_data)
-        self.cursor.execute( query, row_data )
+            print("query: ", query, "Data", value_data)
+        self.cursor.execute(query, value_data)
 
         self.close_db()
 
