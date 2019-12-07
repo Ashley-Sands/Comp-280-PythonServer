@@ -40,6 +40,8 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
             response_data = self.drop_table( data["database"], data["table"] )
         elif page_request == "/update_row" and Help.check_keys(data, ["table", "set_columns", "set_data", "where_columns", "where_data"]):
             response_data = self.update_row(data["database"], data["table"], data["set_columns"], data["set_data"], data["where_columns"], data["where_data"])
+        elif page_request == "/remove_row" and Help.check_keys(data, ["table", "where_columns", "where_data"]):
+            response_data = self.remove_row_from_table(data["database"], data["table"], data["where_columns"], data["where_data"])
 
         json_response = json.dumps(response_data)
         print("out data", json_response)
@@ -128,7 +130,7 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
         database = self.database_and_table_exist(db_name, table_name)
 
         if type(database) is sql:
-            data = database.select_from_table(table_name, "rowid, *")
+            data = database.select_from_table(table_name, ["rowid", "*"])
             return self.new_response(200, data)
         else:
             return database
@@ -157,6 +159,16 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
 
         if type(database) is sql:
             database.drop_table( table_name )
+            return self.new_response(200, "success")
+        else:
+            return database
+
+    def remove_row_from_table(self, db_name, table_name, where_columns, where_data):
+
+        database = self.database_and_table_exist(db_name, table_name)
+
+        if type(database) is sql:
+            database.remove_row(table_name, where_columns, where_data)
             return self.new_response(200, "success")
         else:
             return database
