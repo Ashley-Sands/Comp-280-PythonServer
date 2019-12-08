@@ -127,7 +127,6 @@ class sql_query():
 
         col_name_str = ', '.join(value_columns)
         col_value_str = ', '.join(["?"] * len(value_data))
-        col_str = " (" + col_name_str + ") VALUES (" + col_value_str + ") "
 
         query = "INSERT INTO " + table_name + " (" + col_name_str + ") VALUES (" + col_value_str + ") "
         print(query)
