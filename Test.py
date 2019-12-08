@@ -138,6 +138,7 @@ class TestSqlQuery( unittest.TestCase ):
 
         sql.destroy_database()
 
+
 if __name__ == "__main__":
 
     # search for a path that does not exist

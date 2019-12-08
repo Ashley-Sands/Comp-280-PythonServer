@@ -47,7 +47,7 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
 
         json_response = json.dumps(response_data)
         print("out data", json_response)
-        #return response_data["status"], json_response
+
         return 200, json_response
 
     def get_request(self, page_request, query):
@@ -67,7 +67,7 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
         json_response = json.dumps(response_data)
         print(json_response, query)
 
-        return response_data["status"], json_response
+        return 200, json_response
 
     def database_and_table_exist(self, db_name, table_name):
         """ checks if tables exists in database,
