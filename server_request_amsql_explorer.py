@@ -32,6 +32,8 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
             response_data = self.open_database(data["database"])
         elif page_request == "/new_database":
             response_data = self.new_database(data["database"])
+        elif page_request == "/table_exist" and Help.check_keys(data, ["table"]):
+            response_data = self.database_and_table_exist(data["database"], data["table"])
         elif page_request == "/column_names" and Help.check_keys(data, ["table"]) :
             response_data = self.get_column_names(data["database"], data["table"])
         elif page_request == "/table_rows" and Help.check_keys(data, ["table"]) :
@@ -69,11 +71,11 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
 
         return 200, json_response
 
-    def database_and_table_exist(self, db_name, table_name):
-        """ checks if tables exists in database,
+    def get_database(self, db_name, table_name):
+        """ gets the database if tables exists in database,
 
-        :param db_name:
-        :param table_name:
+        :param db_name:     name of database to check
+        :param table_name:  name of table to find in database
         :return:            instance of database, or error response
         """
 
@@ -86,6 +88,14 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
         else:
             return self.new_response(404, "Error: Database does not exist")
 
+    def database_and_table_exist(self, db_name, table_name):
+
+        database = self.get_database(db_name, table_name)
+
+        if type(database) is sql:
+            return self.new_response(200, "success")
+        else:
+            return database
 
     def open_database(self, database_name):
         """Opens database and responds with all table names"""
@@ -109,7 +119,7 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
     def get_column_names(self, db_name, table_name):
 
         # check the db and table exist
-        database = self.database_and_table_exist(db_name, table_name)
+        database = self.get_database(db_name, table_name)
 
         if type(database) is sql:
             # get all the column names
@@ -129,7 +139,7 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
 
     def get_all_table_rows(self, db_name, table_name):
 
-        database = self.database_and_table_exist(db_name, table_name)
+        database = self.get_database(db_name, table_name)
 
         if type(database) is sql:
             data = database.select_from_table(table_name, ["rowid", "*"])
@@ -148,7 +158,7 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
         :param where_data:      list of where data (must match where_columns)
         :return:                returns status
         """
-        database = self.database_and_table_exist(db_name, table_name)
+        database = self.get_database(db_name, table_name)
 
         if type(database) is sql:
             database.update_row(table_name, set_columns, set_data, where_columns, where_data)
@@ -157,7 +167,7 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
             return database
 
     def insert_row(self, db_name, table_name, value_columns, value_data):
-        database = self.database_and_table_exist(db_name, table_name)
+        database = self.get_database(db_name, table_name)
 
         if type(database) is sql:
             database.insert_row(table_name, value_columns, value_data)
@@ -166,7 +176,7 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
             return database
 
     def drop_table(self, db_name, table_name):
-        database = self.database_and_table_exist(db_name, table_name)
+        database = self.get_database(db_name, table_name)
 
         if type(database) is sql:
             database.drop_table( table_name )
@@ -176,7 +186,7 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
 
     def remove_row_from_table(self, db_name, table_name, where_columns, where_data):
 
-        database = self.database_and_table_exist(db_name, table_name)
+        database = self.get_database(db_name, table_name)
 
         if type(database) is sql:
             database.remove_row(table_name, where_columns, where_data)
