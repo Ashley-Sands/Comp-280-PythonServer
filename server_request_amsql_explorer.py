@@ -34,6 +34,8 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
             response_data = self.new_database(data["database"])
         elif page_request == "/table_exist" and Help.check_keys(data, ["table"]):
             response_data = self.database_and_table_exist(data["database"], data["table"])
+        elif page_request == "/table_not_exist" and Help.check_keys(data, ["table"]):
+            response_data = self.table_does_not_exist(data["database"], data["table"])
         elif page_request == "/column_names" and Help.check_keys(data, ["table"]) :
             response_data = self.get_column_names(data["database"], data["table"])
         elif page_request == "/table_rows" and Help.check_keys(data, ["table"]) :
@@ -96,6 +98,18 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
             return self.new_response(200, "success")
         else:
             return database
+
+    def table_does_not_exist(self, db_name, table_name):
+        """ Checks that table does not exist in database"""
+
+        if Help.file_exist(Config.get("db_root") + db_name):
+            database = sql(db_name)
+            if not database.table_exist(table_name):
+                return self.new_response(200, "success")
+            else:
+                return self.new_response(404, "Error: Table does exist")
+        else:
+            return self.new_response(404, "Error: Database does not exist")
 
     def open_database(self, database_name):
         """Opens database and responds with all table names"""
