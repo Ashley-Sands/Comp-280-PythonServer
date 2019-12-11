@@ -89,11 +89,33 @@ class sql_query():
     @:param table_name: Name of the table to be created.
     @:param col_names: col string
     '''
-    def add_table(self, table_name, col_names):
-        """Adds new table to database"""
+    def add_table(self, table_name, col_names, data_types, data_lengths=None, default_values=None):
+        """Adds new table to database
+
+        :param col_names:       List of column names
+        :param data_types:      list of data types (must match col names or none)
+        :param data_lengths:    list of max column length (must match col names or none)
+        :param default_values:  list of default values for column (must match col names or none)
+        """
         if self.table_exist( table_name ):
             print("Error: can not create table, already exist")
-            return
+            return 404, "table already exist"
+
+        query = "CREATE TABLE "
+        columns = []
+
+        for i, v in enumerate(col_names):
+            data_l = ""
+            default_v = ""
+            if data_lengths is not None and data_lengths[i] != "":
+                data_l = "("+data_lengths[i]+")"
+
+            if default_values is not None and default_values[i] != "":
+                default_v = ' DEFAULT "'+default_values+'"'
+
+            columns.append( v +" "+ data_types[i] + data_l + default_v )
+
+        columns = ', '.join(columns)
 
         self.connect_db()
 

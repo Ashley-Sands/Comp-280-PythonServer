@@ -48,6 +48,8 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
             response_data = self.remove_row_from_table(data["database"], data["table"], data["where_columns"], data["where_data"])
         elif page_request == "/insert_row" and Help.check_keys(data, ["table", "value_columns", "value_data"]):
             response_data = self.insert_row(data["database"], data["table"], data["value_columns"], data["value_data"])
+        elif page_request == "/new_table" and Help.check_keys(data, ["table", "column_names", "data_types", "data_lengths", "default_values"]):
+            response_data = self.new_table
 
         json_response = json.dumps(response_data)
         print("out data", json_response)
@@ -129,6 +131,20 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
             return self.new_response(200, "Success")
         else:
             return self.new_response(404, "Error: Already Exist")
+
+    def new_table(self, database_name, new_table_name, column_names, data_types, data_lengths, default_values):
+
+        if not Help.file_exist(Config.get("db_root") + database_name):
+            database = sql(database_name)
+
+            response = database.add_table(new_table_name, column_names, data_types, data_lengths, default_values)
+
+            if response is not None:
+                return self.new_response(200, "success")
+            else:
+                return self.new_response(response[0], response[1])
+        else:
+            return self.new_response(404, "Error: Database does not exist")
 
     def get_column_names(self, db_name, table_name):
 
