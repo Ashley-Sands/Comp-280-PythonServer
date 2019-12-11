@@ -22,7 +22,7 @@ class ServerRequestDatabase(server_request.ServerRequest):
         table_cols_str = ', '.join( table_col_options )
 
         self.sql_db = sql_query.sql_query(db_name)
-        self.sql_db.add_table(db_table_name, table_cols_str)
+        self.sql_db.add_table(db_table_name, col_names, [""]*len(col_names))
 
 #                              self.table_col_names[0] + " INT, " +
 #                              self.table_col_names[1] + " VARCHAR(255)"

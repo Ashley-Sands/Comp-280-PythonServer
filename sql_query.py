@@ -101,7 +101,9 @@ class sql_query():
             print("Error: can not create table, already exist")
             return 404, "table already exist"
 
-        query = "CREATE TABLE "
+        table_name = table_name.replace(" ", "_")
+
+        query = "CREATE TABLE "+table_name
         columns = []
 
         for i, v in enumerate(col_names):
@@ -111,20 +113,23 @@ class sql_query():
                 data_l = "("+data_lengths[i]+")"
 
             if default_values is not None and default_values[i] != "":
-                default_v = ' DEFAULT "'+default_values+'"'
+                default_v = ' DEFAULT "'+default_values[i]+'"'
 
             columns.append( v +" "+ data_types[i] + data_l + default_v )
 
+        print(columns)
         columns = ', '.join(columns)
 
         self.connect_db()
 
-        query = "CREATE TABLE "+table_name+" ("+col_names+")"
+        query += "("+columns+")"
+        print(query)
         self.cursor.execute(query)
 
         self.close_db()
 
         print("Table Created")
+        return None
 
     def drop_table(self, table_name):
         """drops table from database"""
