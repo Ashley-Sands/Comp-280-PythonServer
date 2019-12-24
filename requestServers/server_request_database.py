@@ -3,6 +3,7 @@ import sql_query
 import json
 from Globals import Global
 
+
 class ServerRequestDatabase(server_request.ServerRequest):
 
     def __init__(self, db_name, db_table_name, col_names, col_options):
