@@ -71,6 +71,10 @@ class sql_query():
 
         return data
 
+    def get_table_column_names(self, table_name):
+        """ Gets a list of all column names (in order)"""
+        return [u[1] for u in self.get_table_columns(table_name)]
+
     def table_exist(self, table_name, close_connect = True):
         """Check if table exist in database"""
         query = "SELECT name FROM sqlite_master WHERE type='table' AND name=? "
