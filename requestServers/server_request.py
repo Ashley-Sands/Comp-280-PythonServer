@@ -5,6 +5,8 @@ import json
 
 class ServerRequest:
 
+    test_request = False;
+
     def post_request(self, page_request, query, data):
         """
 
@@ -13,7 +15,10 @@ class ServerRequest:
         :param data:            data that has been posted
         :return: (int [status], str [responce] )
         """
-        return 404, "Error: Not Found"
+        if self.test_request:
+            return 200, json.dumps( self.new_response( 200, {"p": page_request,"q": query, "d": data} ) )
+        else:
+            return 404, "Error: Not Found"
 
     def get_request(self, page_request, query):
         """
@@ -22,7 +27,10 @@ class ServerRequest:
         :param query:           url query (after ?)
         :return: (int [status], str [responce] )
         """
-        return 404, "Error: Not Found"
+        if self.test_request:
+            return 200, json.dumps( self.new_response( 200, {"p": page_request, "q": query} ) )
+        else:
+            return 404, "Error: Not Found"
 
     def new_response(self, status, response):
         """Creates a new response read for json convert

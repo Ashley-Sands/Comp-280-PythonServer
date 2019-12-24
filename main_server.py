@@ -86,9 +86,10 @@ class Server(BaseHTTPRequestHandler):
 
 print("- Run Test.py to test sql_query ")
 print("- Starting...")
-# set up the request callbacks.
-request = server_request.ServerRequest();
 
+# Start Test Request
+request = server_request.ServerRequest();
+request.debug = True;
 Server.post_callbacks["test"] = request.post_request
 Server.get_callbacks["test"]  = request.get_request
 
