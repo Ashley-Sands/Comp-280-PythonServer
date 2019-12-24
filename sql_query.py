@@ -98,7 +98,7 @@ class sql_query():
         :param default_values:  list of default values for column (must match col names or none)
         """
         if self.table_exist( table_name ):
-            print("Error: can not create table, already exist")
+            print("Error: can not create table(", table_name, "), already exist")
             return 404, "table already exist"
 
         table_name = table_name.replace(" ", "_")
