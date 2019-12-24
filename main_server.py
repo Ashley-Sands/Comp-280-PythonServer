@@ -105,6 +105,7 @@ Server.get_callbacks["game"]  = game_data_request.get_request
 
 # Start AMSql Explorer API
 AMSql = amsql_explorer.ServerRequest_AMSqlExplorer()
+AMSql.force_200_status = True
 Server.post_callbacks["amsql"] = AMSql.post_request
 Server.get_callbacks["amsql"]  = AMSql.get_request
 
@@ -112,8 +113,9 @@ server = HTTPServer( (GlobalConfig.get("host"), GlobalConfig.get("port")), Serve
 
 # start Panman API
 pacman = server_request_pacman.ServerRequest_Pacman()
+pacman.force_200_status = True
 Server.post_callbacks["pacman"] = pacman.post_request
-Server.get_callbacks["pacman"] = pacman.get_request
+Server.get_callbacks["pacman"]  = pacman.get_request
 
 print("- Waiting on you request...")
 
