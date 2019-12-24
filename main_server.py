@@ -1,6 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse
 from requestServers import server_request_database, server_request_amsql_explorer as amsql_explorer, server_request
+from requestServers import server_request_pacman
 
 from Globals import Global, GlobalConfig
 
@@ -108,6 +109,11 @@ Server.post_callbacks["amsql"] = AMSql.post_request
 Server.get_callbacks["amsql"]  = AMSql.get_request
 
 server = HTTPServer( (GlobalConfig.get("host"), GlobalConfig.get("port")), Server )
+
+# start Panman API
+pacman = server_request_pacman.ServerRequest_Pacman()
+Server.post_callbacks["pacman"] = pacman.post_request
+Server.get_callbacks["pacman"] = pacman.get_request
 
 print("- Waiting on you request...")
 
