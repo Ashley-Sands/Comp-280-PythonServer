@@ -1,5 +1,4 @@
-
-import server_request
+from requestServers import server_request
 import sql_query
 import json
 from Globals import Global

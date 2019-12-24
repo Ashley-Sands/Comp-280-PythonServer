@@ -1,4 +1,4 @@
-from server_request import ServerRequest
+from requestServers.server_request import ServerRequest
 from helpers import Helpers as Help
 from sql_query import sql_query as sql
 import json

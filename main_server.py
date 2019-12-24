@@ -1,12 +1,8 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse
-import sql_query
-import json
-import server_request
-import server_request_database
-import server_request_amsql_explorer as amsql_explorer
+from requestServers import server_request_database, server_request_amsql_explorer as amsql_explorer, server_request
 
-from Globals import Global, GlobalConfig
+from Globals import GlobalConfig
 
 # config
 GlobalConfig.set("host", "127.0.0.1")
@@ -105,6 +101,7 @@ game_data_request = server_request_database.ServerRequestDatabase("cube_killer",
 Server.post_callbacks["game"] = game_data_request.post_request
 Server.get_callbacks["game"]  = game_data_request.get_request
 
+# Start AMSql Explorer API
 AMSql = amsql_explorer.ServerRequest_AMSqlExplorer()
 Server.post_callbacks["amsql"] = AMSql.post_request
 Server.get_callbacks["amsql"]  = AMSql.get_request
