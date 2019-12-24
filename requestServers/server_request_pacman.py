@@ -1,5 +1,6 @@
 from requestServers import server_request
 import sql_query as sql
+import json
 
 class ServerRequest_Pacman( server_request.ServerRequest ):
 
@@ -20,9 +21,15 @@ class ServerRequest_Pacman( server_request.ServerRequest ):
 
     def post_request(self, page_request, query, data):
 
+        response_data = self.new_response( 404, "Error: Not Found" )
+        json_response = None
+        data = json.loads(data)
 
-
-        pass
+        return response_data["status"], response_data
 
     def get_request(self, page_request, query):
-        pass
+
+        response_data = self.new_response(404, "Error: Not Found")
+        json_response = None
+
+        return response_data["status"], response_data
