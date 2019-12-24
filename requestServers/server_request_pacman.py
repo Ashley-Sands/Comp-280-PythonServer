@@ -30,6 +30,8 @@ class ServerRequest_Pacman( server_request.ServerRequest ):
                 Help.check_keys(data, self.database.get_table_column_names("leaderboard")):  # insure all data is provided
             pass
 
+        print(data)
+
         return self.parse_response(response_data)
 
     def get_request(self, page_request, query):

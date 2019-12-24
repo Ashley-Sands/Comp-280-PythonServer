@@ -64,14 +64,12 @@ class Server(BaseHTTPRequestHandler):
         path = '/'.join( self.request.path.split("/")[2:] )
         path = "/" + path
 
-        print(dir_root, path)
-
         # remove all trailing '/' if any
         while len(path) > 0 and path[-1] == "/":
             path = path[:-1]
 
         if dir_root in callbacks:
-            print("HaveKEY")
+            print("Directory Found!", dir_root, path)
             if post_data is None:
                 response_data = callbacks[dir_root]( path, self.request.query )
             else:

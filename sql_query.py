@@ -65,8 +65,6 @@ class sql_query():
         data = self.cursor.fetchall()
         row_count = len(data)
 
-        print(row_count, data)
-
         self.close_db()
 
         return data
