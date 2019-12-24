@@ -51,11 +51,7 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
         elif page_request == "/new_table" and Help.check_keys(data, ["table", "column_names", "data_types", "data_lengths", "default_values"]):
             response_data = self.new_table(data["database"], data["table"], data["column_names"], data["data_types"], data["data_lengths"], data["default_values"])
 
-        print(response_data)
-        json_response = json.dumps(response_data)
-        print("out data", json_response)
-
-        return 200, json_response
+        return self.parse_response(response_data)
 
     def get_request(self, page_request, query):
         """
@@ -71,10 +67,7 @@ class ServerRequest_AMSqlExplorer( ServerRequest ):
         if page_request == "/open_database":
             response_data = self.open_database(query)
 
-        json_response = json.dumps(response_data)
-        print(json_response, query)
-
-        return 200, json_response
+        return self.parse_response(response_data)
 
     def get_database(self, db_name, table_name):
         """ gets the database if tables exists in database,
