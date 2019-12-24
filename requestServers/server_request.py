@@ -5,7 +5,8 @@ import json
 
 class ServerRequest:
 
-    test_request = False;
+    test_request = False
+    force_200_status = False
 
     def post_request(self, page_request, query, data):
         """
@@ -44,3 +45,14 @@ class ServerRequest:
 
         return response_dict
 
+    def parse_response(self, response_data):
+        """ parse dict to json string
+
+        :param response_data:   response dict
+        :return:                status, json str
+        """
+        json_response = json.dumps(response_data)
+        if self.force_200_status:
+            return 200, json_response
+        else:
+            return response_data["status"], json_response
