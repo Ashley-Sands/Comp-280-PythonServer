@@ -1,6 +1,7 @@
 from requestServers import server_request
 import sql_query as sql
 import json
+from helpers import Helpers as Help
 
 class ServerRequest_Pacman( server_request.ServerRequest ):
 
@@ -13,7 +14,7 @@ class ServerRequest_Pacman( server_request.ServerRequest ):
 
         # set up leader board
         lb_table_cols = ["username", "ghost_killed", "pills_collected", "level",
-                         "time", "score", "level_mode", "data_submitted"]
+                         "time", "score", "level_mode", "date_submitted"]
 
         lb_col_data_types = ["VARCHAR", "INT", "INT", "INT", "FLOAT", "INT", "VARCHAR", "INT"]
 
@@ -25,7 +26,9 @@ class ServerRequest_Pacman( server_request.ServerRequest ):
         json_response = None
         data = json.loads(data)
 
-        json_response = json.dumps(response_data)
+        if page_request == "/submit_score" and \
+                Help.check_keys(data, self.database.get_table_column_names("leaderboard")):  # insure all data is provided
+            pass
 
         return self.parse_response(response_data)
 
