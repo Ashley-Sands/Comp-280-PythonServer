@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse
 from requestServers import server_request_database, server_request_amsql_explorer as amsql_explorer, server_request
 
-from Globals import GlobalConfig
+from Globals import Global, GlobalConfig
 
 # config
 GlobalConfig.set("host", "127.0.0.1")
