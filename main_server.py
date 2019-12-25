@@ -71,9 +71,9 @@ class Server(BaseHTTPRequestHandler):
         if dir_root in callbacks:
             print("Directory Found!", dir_root, path)
             if post_data is None:
-                response_data = callbacks[dir_root]( path, self.request.query )
+                response_data = callbacks[dir_root]( path, self.get_query_data() )
             else:
-                response_data = callbacks[dir_root]( path, self.request.query, post_data.decode('utf-8') )
+                response_data = callbacks[dir_root]( path, self.get_query_data(), post_data.decode('utf-8') )
 
             status = response_data[0]
 
@@ -81,6 +81,20 @@ class Server(BaseHTTPRequestHandler):
                 response = response_data[1]
 
         return status, response
+
+    def get_query_data(self):
+
+        query_data = {}
+        querys = self.request.query.split("&")
+
+        for q in querys:
+            data = q.split("=", 1)
+            if len(data) > 1:
+                query_data[data[0]] = data[1]
+            elif len(data) == 1:
+                query_data[data[0]] = ""
+
+        return query_data
 
 
 print("- Run Test.py to test sql_query ")
