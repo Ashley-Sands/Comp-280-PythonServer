@@ -28,9 +28,7 @@ class ServerRequest_Pacman( server_request.ServerRequest ):
 
         if page_request == "/submit_score" and \
                 Help.check_keys(data, self.database.get_table_column_names("leaderboard")):  # insure all data is provided
-            pass
-
-        print(data)
+                response_data = self.submit_score(data)
 
         return self.parse_response(response_data)
 
@@ -39,4 +37,29 @@ class ServerRequest_Pacman( server_request.ServerRequest ):
         response_data = self.new_response(404, "Error: Not Found")
         json_response = None
 
+        if page_request == "/leaderboard" and "game_mode" in query:
+            response_data = self.get_scores(query["game_mode"])
+
         return self.parse_response(response_data)
+
+    def submit_score(self, data):
+
+        col_names = self.database.get_table_column_names("leaderboard")
+        col_values = []
+        # since we have checked that the data exist we can just loop through all the column names
+        # and just append the values so they are in order
+        for n in col_names:
+            col_values.append(data[n])
+
+        self.database.insert_row("leaderboard", col_names, col_values)
+
+        return self.new_response(200, "successful")
+
+    def get_scores(self, mode_name):
+
+        score_data = self.database.select_from_table("leaderboard", ["*"], ["level_mode"], [mode_name])
+        data_names = self.database.get_table_column_names("leaderboard")
+        # put each row of results into a dict with key of column name :)
+        data = [dict(zip(data_names, s)) for s in score_data]
+
+        return self.new_response(200, data)
