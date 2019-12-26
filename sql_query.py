@@ -193,7 +193,7 @@ class sql_query():
         :param column_names:    list of column names to get data rom (* = all)
         :param where_columns:   list of where column names
         :param where_data:      list of where data (must match where column order)
-        :param order_data:      dict of order data keys {"order_column": list of strings, "sort_type": string (ASC || DESC)}
+        :param order_data:      dict of order data keys {"order_columns": list of strings, "sort_type": string (ASC || DESC)}
         :return:
         """
         if not self.table_exist(table_name):
@@ -204,14 +204,14 @@ class sql_query():
         col_str = self.sql_string_builder( column_names, ",", False )
         where_str = self.sql_string_builder(where_columns, "AND ")
 
-        self.connect_db()
-
+        # create the where string
         if len(where_columns) > 0:
             where_str = " WHERE "+where_str
         else:
             where_str = ""
 
-        if order_data is not None and "order_column" in order_data and \
+        # create the order by string
+        if order_data is not None and "order_columns" in order_data and \
                 "sort_type" in order_data and type(order_data["order_columns"] is list):
             order_str = ', '.join(order_data["order_columns"])
             # create the order by string removing the last comer of the joined columns
@@ -222,7 +222,7 @@ class sql_query():
         query = "SELECT " + col_str + " FROM " + table_name + where_str + order_str
 
         print (query)
-
+        self.connect_db()
         self.cursor.execute( query, where_data )
         data = self.cursor.fetchall()
 
