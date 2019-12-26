@@ -56,7 +56,7 @@ class ServerRequest_Pacman( server_request.ServerRequest ):
         return self.new_response(200, "successful")
 
     def get_scores(self, mode_name):
-        order_by = {"order_columns": ["score"], "sort_type": "ASC"}
+        order_by = {"order_columns": ["score"], "sort_type": "DESC"}
         score_data = self.database.select_from_table("leaderboard", ["*"], ["level_mode"], [mode_name], order_by)
         data_names = self.database.get_table_column_names("leaderboard")
         # put each row of results into a dict with key of column name :)
