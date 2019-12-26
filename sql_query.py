@@ -214,8 +214,7 @@ class sql_query():
         if order_data is not None and "order_columns" in order_data and \
                 "sort_type" in order_data and type(order_data["order_columns"] is list):
             order_str = ', '.join(order_data["order_columns"])
-            # create the order by string removing the last comer of the joined columns
-            order_str = "ORDER BY " + order_str[:-2] + " " + order_data["sort_type"]
+            order_str = "ORDER BY " + order_str + " " + order_data["sort_type"]
         else:
             order_str = ""
 
