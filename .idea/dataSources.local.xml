@@ -7,5 +7,15 @@
       <auth-required>false</auth-required>
       <schema-mapping />
     </data-source>
+    <data-source name="test_db_destroy" uuid="0a11a324-bde3-4636-91e6-7f81b7a82e29">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
+      <auth-required>false</auth-required>
+      <schema-mapping />
+    </data-source>
+    <data-source name="test_db [2]" uuid="e720a7af-fb56-4e68-b2ba-145260501437">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
+      <auth-required>false</auth-required>
+      <schema-mapping />
+    </data-source>
   </component>
 </project>

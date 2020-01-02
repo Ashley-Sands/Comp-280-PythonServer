@@ -168,7 +168,7 @@ class sql_query():
         print("data Inserted to table")
 
     def remove_row(self, table_name, where_columns, where_data):
-        """removerow from table"""
+        """remove row from table"""
         if not self.table_exist(table_name):
             print("Error: can not delete row from table, table does not exist")
             return

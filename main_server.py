@@ -8,9 +8,6 @@ GlobalConfig.set("host", "127.0.0.1")
 GlobalConfig.set("port", 8000)
 GlobalConfig.set("db_root", "databases/")
 
-host = "127.0.0.1"
-port = 8000
-
 class Server(BaseHTTPRequestHandler):
     # Both use the first part of path as key (ie if url = 'abc.com/path_p0/path_p1/page.html' key = 'path_p0' )
     post_callbacks = {}   # callback sig: (request, data   )
