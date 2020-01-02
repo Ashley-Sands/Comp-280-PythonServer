@@ -24,7 +24,7 @@ class Helpers:
         :return:        True if exist
         """
 
-        return os.path.exists(path) and os.path.isdir()
+        return os.path.exists(path) and os.path.isdir(path)
 
     @staticmethod
     def create_directory(path):
