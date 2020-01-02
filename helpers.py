@@ -17,6 +17,28 @@ class Helpers:
         return os.path.isfile( full_path )
 
     @staticmethod
+    def directory_exist(path):
+        """ checks if directory exist
+
+        :param path:     path to directory
+        :return:        True if exist
+        """
+
+        return os.path.exists(path) and os.path.isdir()
+
+    @staticmethod
+    def create_directory(path):
+        """ Creates directory if does not exist
+        :param path: path to create
+        :return:        True if path was created, else false if already exist
+        """
+        if not Helpers.directory_exist(path):
+            os.mkdir(path)
+            return True
+
+        return False
+
+    @staticmethod
     def check_keys(dict_, keys):
         """ search dict for all keys provided
 

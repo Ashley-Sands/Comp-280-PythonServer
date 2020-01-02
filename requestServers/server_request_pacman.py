@@ -18,7 +18,7 @@ class ServerRequest_Pacman( server_request.ServerRequest ):
 
         lb_col_data_types = ["VARCHAR", "INT", "INT", "INT", "FLOAT", "INT", "VARCHAR", "INT"]
 
-        self.database.add_table("leaderboard", lb_table_cols, lb_col_data_types);
+        self.database.add_table("leaderboard", lb_table_cols, lb_col_data_types)
 
     def post_request(self, page_request, query, data):
 

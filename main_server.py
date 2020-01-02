@@ -1,6 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse
 
+from helpers import Helpers
 from Globals import Global, GlobalConfig
 
 # config
@@ -95,6 +96,9 @@ class Server(BaseHTTPRequestHandler):
 if __name__ == "__main__":
 
     import server_setup
+
+    # insure that the database folder exist
+    Helpers.create_directory(GlobalConfig.get("db_root"))
 
     print("- Run Test.py to test sql_query ")
     print("- Starting...")
