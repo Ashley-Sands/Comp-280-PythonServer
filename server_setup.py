@@ -10,11 +10,19 @@ class ServerSetup:
         # Start AMSql Explorer API
         AMSql = amsql_explorer.ServerRequest_AMSqlExplorer()
         AMSql.force_200_status = True
-        self.server.post_callbacks["amsql"] = AMSql.post_request
-        self.server.get_callbacks["amsql"] = AMSql.get_request
+        self.add_callback("amsql", AMSql)
 
         # start Pacman API
         pacman = server_request_pacman.ServerRequest_Pacman()
         pacman.force_200_status = True
-        self.server.post_callbacks["pacman"] = pacman.post_request
-        self.server.get_callbacks["pacman"] = pacman.get_request
+        self.add_callback("pacman", pacman)
+
+    def add_callback(self, root_dir, _server_request):
+        """ Adds the get and post function to the callbacks on server
+
+        :param root_dir:        the root directory of the modules (/my_directory/)
+        :param _server_request: instances of server request class
+        :return:
+        """
+        self.server.post_callbacks[root_dir] = _server_request.post_request
+        self.server.get_callbacks[root_dir] = _server_request.get_request
