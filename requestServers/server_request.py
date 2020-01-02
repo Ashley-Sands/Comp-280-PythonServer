@@ -12,7 +12,7 @@ class ServerRequest:
         """
 
         :param page_request:    page that is being requested
-        :param query:           url query (after ?)
+        :param query:           url query dict of query data (key=value)
         :param data:            data that has been posted
         :return: (int [status], str [responce] )
         """
@@ -25,7 +25,7 @@ class ServerRequest:
         """
 
         :param page_request:    page that is being requested
-        :param query:           url query (after ?)
+        :param query:           url query dict of query data (key=value)
         :return: (int [status], str [responce] )
         """
         if self.test_request:
