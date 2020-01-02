@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="044511c4-2dcb-4859-9534-58b30bfe7690" name="Default Changelist" comment="added page with data check">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="044511c4-2dcb-4859-9534-58b30bfe7690" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/sql_query.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +67,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main_server">
+  <component name="RunManager" selected="Python.PyInstaller_main_server">
     <configuration name="Globals" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Comp-280 (2)" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -87,6 +82,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Globals.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="PyInstaller_main_server" type="PythonConfigurationType" factoryName="Python">
+      <module name="Comp-280 (2)" />
+      <option name="INTERPRETER_OPTIONS" value="-m PyInstaller -y --log-level CRITICAL --clean --distpath &quot;./build&quot; --workpath &quot;./build/temp&quot; -F" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="I:\Documents\Comp-280 (2)\venv_2\Scripts\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main_server.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -163,6 +180,7 @@
     </configuration>
     <list>
       <item itemvalue="Python.main_server" />
+      <item itemvalue="Python.PyInstaller_main_server" />
       <item itemvalue="Python.Test" />
       <item itemvalue="Python.sql_query" />
       <item itemvalue="Python.Globals" />
@@ -196,20 +214,6 @@
       <workItem from="1571908204063" duration="6234000" />
       <workItem from="1572013252960" duration="1151000" />
       <workItem from="1575636964897" duration="6664000" />
-    </task>
-    <task id="LOCAL-00026" summary="Changed update row so the set and where data are seperate">
-      <created>1575567740779</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1575567740779</updated>
-    </task>
-    <task id="LOCAL-00027" summary="added database and table exits function to help reduce code base">
-      <created>1575570188127</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1575570188127</updated>
     </task>
     <task id="LOCAL-00028" summary="Added helper method to check that all keys provided exist in the give dict">
       <created>1575637364849</created>
@@ -540,7 +544,21 @@
       <option name="project" value="LOCAL" />
       <updated>1578000095017</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="removed old vars">
+      <created>1578000878564</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1578000878564</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Updated RRADME.md">
+      <created>1578000942806</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1578000942807</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TodoView">
@@ -569,8 +587,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added test request to default base server request" />
-    <MESSAGE value="added pacman db set and submit score setup" />
     <MESSAGE value="add basic request handlering" />
     <MESSAGE value="added pacman instances to main server" />
     <MESSAGE value="imporved error message" />
@@ -594,7 +610,9 @@
     <MESSAGE value="added server_setup so all the directories are setup in a separate file" />
     <MESSAGE value="added add_callback to server_setup to make life a lil easier" />
     <MESSAGE value="removed old test" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed old test" />
+    <MESSAGE value="removed old vars" />
+    <MESSAGE value="Updated RRADME.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated RRADME.md" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Comp_280__2_$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1572014137730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

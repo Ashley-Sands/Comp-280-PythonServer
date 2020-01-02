@@ -2,7 +2,7 @@
 
 ### Running the server
 Run '/main/build.exe' to run the standalone build of the http server  
-The server has been build using PyInstall 3.5  
+The server has been build using PyInstaller 3.5  
 To run the web server from source run ```main_server.py``` using python 3.7 (no modules required)  
 
 ### Extending the server
