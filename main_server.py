@@ -123,7 +123,7 @@ Server.get_callbacks["amsql"]  = AMSql.get_request
 
 server = HTTPServer( (GlobalConfig.get("host"), GlobalConfig.get("port")), Server )
 
-# start Panman API
+# start Pacman API
 pacman = server_request_pacman.ServerRequest_Pacman()
 pacman.force_200_status = True
 Server.post_callbacks["pacman"] = pacman.post_request
