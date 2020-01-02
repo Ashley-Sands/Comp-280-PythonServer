@@ -27,9 +27,9 @@ and the server_request instances.
 **DONE!**
 
 #### Other 
-see ```sql_query.py``` for sql_lite helper functions 
-see ```helpers.py``` for general helper functions
-host, port and database_root can be changed at the top of main server
+see ```sql_query.py``` for sql_lite helper functions  
+see ```helpers.py``` for general helper functions  
+host, port and database_root can be changed at the top of main server  
 ```
 # config
 GlobalConfig.set("host", "127.0.0.1")
