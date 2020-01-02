@@ -39,6 +39,8 @@ class ServerRequest_Pacman( server_request.ServerRequest ):
 
         if page_request == "/leaderboard" and "game_mode" in query:
             response_data = self.get_scores(query["game_mode"])
+        if page_request == "/settings" and "name" in query:
+            response_data = self.get_settings(query["name"])
 
         return self.parse_response(response_data)
 
@@ -58,8 +60,26 @@ class ServerRequest_Pacman( server_request.ServerRequest ):
     def get_scores(self, mode_name):
         order_by = {"order_columns": ["score"], "sort_type": "DESC"}
         score_data = self.database.select_from_table("leaderboard", ["*"], ["level_mode"], [mode_name], order_by)
-        data_names = self.database.get_table_column_names("leaderboard")
-        # put each row of results into a dict with key of column name :)
-        data = [dict(zip(data_names, s)) for s in score_data]
+        data = self.zip_column_names("leaderboard", score_data)
 
         return self.new_response(200, data)
+
+    def get_settings(self, setting_name):
+
+        where_cols = []
+        where_data = []
+
+        if setting_name != "ALL":
+            where_cols.append("setting_name")
+            where_data.append(setting_name)
+
+        setting_data = self.database.select_from_table("game_settings", ["*"], where_cols, where_data)
+        data = self.zip_column_names("game_settings", setting_data)
+
+        return self.new_response(200, data)
+
+    def zip_column_names(self, table_name, table_data):
+        """Zips data from into a dict where the keys are column names"""
+        data_names = self.database.get_table_column_names(table_name)
+        # put each row of results into a dict with key of column name :)
+        return [dict(zip(data_names, s)) for s in table_data]
