@@ -275,19 +275,3 @@ class sql_query():
             string = string[:-len(join)]
 
         return string
-
-
-if __name__ == "__main__":
-
-    sql = sql_query("databases/test_db")
-
-    while(1):
-        inp = input()
-        inp = inp.lower()
-        inp = inp.split(":")
-        print(inp)
-        if inp[0] == "exit":
-            exit()
-        elif inp[0] == "drop":
-            sql.drop_table(inp[1])
-            print("Droped")
