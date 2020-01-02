@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="044511c4-2dcb-4859-9534-58b30bfe7690" name="Default Changelist" comment="Updated RRADME.md">
+    <list default="true" id="044511c4-2dcb-4859-9534-58b30bfe7690" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -213,27 +213,6 @@
       <workItem from="1571908204063" duration="6234000" />
       <workItem from="1572013252960" duration="1151000" />
       <workItem from="1575636964897" duration="6664000" />
-    </task>
-    <task id="LOCAL-00030" summary="added drop table and update row method to server request">
-      <created>1575637505946</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1575637505946</updated>
-    </task>
-    <task id="LOCAL-00031" summary="Moved sql string builder into its own function to make the other function more consistent">
-      <created>1575637953338</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1575637953338</updated>
-    </task>
-    <task id="LOCAL-00032" summary="imporved string builder">
-      <created>1575639139937</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1575639139937</updated>
     </task>
     <task id="LOCAL-00033" summary="Changed select from table params be inline with update row.&#10;&#10;it a much more logical method :D">
       <created>1575639267618</created>
@@ -557,7 +536,28 @@
       <option name="project" value="LOCAL" />
       <updated>1578003825733</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="updated workspace">
+      <created>1578004518603</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1578004518603</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Added Build">
+      <created>1578004556449</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1578004556449</updated>
+    </task>
+    <task id="LOCAL-00081" summary="fixed typo">
+      <created>1578004672537</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1578004672537</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TodoView">
@@ -586,9 +586,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="imporved error message" />
-    <MESSAGE value="added method to parsh dict to json str with correct status" />
-    <MESSAGE value="updated amsql to use new parse function :)" />
     <MESSAGE value="added new parse to json method" />
     <MESSAGE value="forced both AMSql and pacman servers to respond with status 200" />
     <MESSAGE value="added method to get all column names from table to make life a lil easier" />
@@ -611,7 +608,10 @@
     <MESSAGE value="Updated RRADME.md" />
     <MESSAGE value="Fixed crash if db folder does not exist" />
     <MESSAGE value="fixed crash when attempting to create new directroy when it already exist" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed crash when attempting to create new directroy when it already exist" />
+    <MESSAGE value="updated workspace" />
+    <MESSAGE value="Added Build" />
+    <MESSAGE value="fixed typo" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed typo" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Comp_280__2_$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1572014137730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
