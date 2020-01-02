@@ -1,7 +1,5 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse
-from requestServers import server_request_database, server_request_amsql_explorer as amsql_explorer, server_request
-from requestServers import server_request_pacman
 
 from Globals import Global, GlobalConfig
 
@@ -97,26 +95,21 @@ class Server(BaseHTTPRequestHandler):
         return query_data
 
 
-print("- Run Test.py to test sql_query ")
-print("- Starting...")
+if __name__ == "__main__":
 
-# Start AMSql Explorer API
-AMSql = amsql_explorer.ServerRequest_AMSqlExplorer()
-AMSql.force_200_status = True
-Server.post_callbacks["amsql"] = AMSql.post_request
-Server.get_callbacks["amsql"]  = AMSql.get_request
+    import server_setup
 
-server = HTTPServer( (GlobalConfig.get("host"), GlobalConfig.get("port")), Server )
+    print("- Run Test.py to test sql_query ")
+    print("- Starting...")
 
-# start Pacman API
-pacman = server_request_pacman.ServerRequest_Pacman()
-pacman.force_200_status = True
-Server.post_callbacks["pacman"] = pacman.post_request
-Server.get_callbacks["pacman"]  = pacman.get_request
+    server_directories = server_setup.ServerSetup(Server)
+    server_directories.setup()
 
-print("- Waiting on you request...")
+    server = HTTPServer( (GlobalConfig.get("host"), GlobalConfig.get("port")), Server )
 
-while True:
-    server.serve_forever()
+    print("- Waiting on you request...")
 
-server.server_close()
+    while True:
+        server.serve_forever()
+
+    server.server_close()
