@@ -100,21 +100,6 @@ class Server(BaseHTTPRequestHandler):
 print("- Run Test.py to test sql_query ")
 print("- Starting...")
 
-# Start Test Request
-request = server_request.ServerRequest();
-request.debug = True;
-Server.post_callbacks["test"] = request.post_request
-Server.get_callbacks["test"]  = request.get_request
-
-# Create the game data callbacks
-game_data_request = server_request_database.ServerRequestDatabase("cube_killer", "game_data",
-                                                                  ["spwanTime", "position",     "scale"],
-                                                                  ["INT",       "VARCHAR(255)", "VARCHAR(255)"]
-                                                                  )
-
-Server.post_callbacks["game"] = game_data_request.post_request
-Server.get_callbacks["game"]  = game_data_request.get_request
-
 # Start AMSql Explorer API
 AMSql = amsql_explorer.ServerRequest_AMSqlExplorer()
 AMSql.force_200_status = True
