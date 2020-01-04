@@ -130,6 +130,16 @@ class sql_query():
 
             v = re.sub("\s", "_", v )  # replace white space with underscores
 
+            # make sure the first character is not a number
+            failed = False
+            try:
+                int(v[0])
+            except: # add underscore at start if it does
+                failed = True
+
+            if not failed:
+                v = "_"+v
+
             columns.append( v +" "+ data_types[i] + data_l + default_v )
 
         print(columns)

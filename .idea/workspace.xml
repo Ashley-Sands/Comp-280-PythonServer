@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="044511c4-2dcb-4859-9534-58b30bfe7690" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main_server.exe" beforeDir="false" afterPath="$PROJECT_DIR$/build/main_server.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/sql_query.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +67,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.PyInstaller_main_server">
+  <component name="RunManager" selected="Python.main_server">
     <configuration name="Globals" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Comp-280 (2)" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -214,20 +214,6 @@
       <workItem from="1571908204063" duration="6234000" />
       <workItem from="1572013252960" duration="1151000" />
       <workItem from="1575636964897" duration="6664000" />
-    </task>
-    <task id="LOCAL-00037" summary="Added some test and removed old test :)">
-      <created>1575679065647</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1575679065647</updated>
-    </task>
-    <task id="LOCAL-00038" summary="renamed params">
-      <created>1575728958733</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1575728958733</updated>
     </task>
     <task id="LOCAL-00039" summary="added remove row from table">
       <created>1575728984477</created>
@@ -558,7 +544,21 @@
       <option name="project" value="LOCAL" />
       <updated>1578109268892</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="Updated Build">
+      <created>1578109714297</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1578109714297</updated>
+    </task>
+    <task id="LOCAL-00087" summary="fixed error when table name or colum name has white space in it">
+      <created>1578111997613</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1578111997613</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TodoView">
@@ -587,8 +587,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="cleaned up some old prints" />
-    <MESSAGE value="added method to process get/query data" />
     <MESSAGE value="added get leaderboard and submit score" />
     <MESSAGE value="Added order support for select from table" />
     <MESSAGE value="fixed typo and added to panman server" />
@@ -612,7 +610,9 @@
     <MESSAGE value="Added create table for game settings to init" />
     <MESSAGE value="Added default game setting on init :D" />
     <MESSAGE value="fixed typo in default start lives" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed typo in default start lives" />
+    <MESSAGE value="Updated Build" />
+    <MESSAGE value="fixed error when table name or colum name has white space in it" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed error when table name or colum name has white space in it" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Comp_280__2_$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1572014137730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
