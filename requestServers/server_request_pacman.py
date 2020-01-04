@@ -23,6 +23,7 @@ class ServerRequest_Pacman( server_request.ServerRequest ):
         gs_col_data_types = ["VARCHAR", "FLOAT", "VARCHAR"]
 
         self.database.add_table("game_settings", gs_table_cols, gs_col_data_types)
+        self.add_default_settings()
 
     def post_request(self, page_request, query, data):
 
@@ -47,6 +48,26 @@ class ServerRequest_Pacman( server_request.ServerRequest ):
             response_data = self.get_settings(query["name"])
 
         return self.parse_response(response_data)
+
+    def add_default_settings(self):
+        """Adds default settings if they do not exist"""
+
+        # define the default values (list of tuples [(key, value),...] )
+        values = [("ghost_start_speed", 500),
+                  ("ghost_speed_incress", 25),
+                  ("start_ammo", 100),
+                  ("start_lives", 10),
+                  ("pill_respwan_time", 45),
+                  ("powerPill_respwan_time", 60),
+                  ("gun_clip_size", 10)]
+
+        # check that the setting name does not exist
+        for v in values:
+            setting = self.database.select_from_table("game_settings", ["*"], ["setting_name"], [v[0]])
+            if len(setting) < 1: # add the value if no setting was returned.
+                self.database.insert_row("game_settings", ["setting_name", "number_value"], [v[0], v[1]])
+
+        print("Default GameSetting: OK!")
 
     def submit_score(self, data):
 
