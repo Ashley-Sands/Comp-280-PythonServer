@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="044511c4-2dcb-4859-9534-58b30bfe7690" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requestServers/server_request_pacman.py" beforeDir="false" afterPath="$PROJECT_DIR$/requestServers/server_request_pacman.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/main_server.exe" beforeDir="false" afterPath="$PROJECT_DIR$/build/main_server.exe" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +67,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main_server">
+  <component name="RunManager" selected="Python.PyInstaller_main_server">
     <configuration name="Globals" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Comp-280 (2)" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -214,20 +214,6 @@
       <workItem from="1571908204063" duration="6234000" />
       <workItem from="1572013252960" duration="1151000" />
       <workItem from="1575636964897" duration="6664000" />
-    </task>
-    <task id="LOCAL-00035" summary="Added unit test for create and destroy DB">
-      <created>1575642566293</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1575642566293</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Hmm aparently i forgot the .py bit in the file name :|">
-      <created>1575674521802</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1575674521802</updated>
     </task>
     <task id="LOCAL-00037" summary="Added some test and removed old test :)">
       <created>1575679065647</created>
@@ -558,7 +544,21 @@
       <option name="project" value="LOCAL" />
       <updated>1578107484326</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Added default game setting on init :D">
+      <created>1578108405412</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1578108405412</updated>
+    </task>
+    <task id="LOCAL-00085" summary="fixed typo in default start lives">
+      <created>1578109268892</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1578109268892</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TodoView">
@@ -587,8 +587,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added method to get all column names from table to make life a lil easier" />
-    <MESSAGE value="added page with data check" />
     <MESSAGE value="cleaned up some old prints" />
     <MESSAGE value="added method to process get/query data" />
     <MESSAGE value="added get leaderboard and submit score" />
@@ -612,7 +610,9 @@
     <MESSAGE value="fixed typo" />
     <MESSAGE value="Fixed Crash geting data from a table that does not exist" />
     <MESSAGE value="Added create table for game settings to init" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added create table for game settings to init" />
+    <MESSAGE value="Added default game setting on init :D" />
+    <MESSAGE value="fixed typo in default start lives" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed typo in default start lives" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Comp_280__2_$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1572014137730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
