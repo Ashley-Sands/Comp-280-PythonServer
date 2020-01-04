@@ -74,6 +74,7 @@ class ServerRequest_Pacman( server_request.ServerRequest ):
             where_data.append(setting_name)
 
         setting_data = self.database.select_from_table("game_settings", ["*"], where_cols, where_data)
+
         data = self.zip_column_names("game_settings", setting_data)
 
         return self.new_response(200, data)
@@ -82,4 +83,7 @@ class ServerRequest_Pacman( server_request.ServerRequest ):
         """Zips data from into a dict where the keys are column names"""
         data_names = self.database.get_table_column_names(table_name)
         # put each row of results into a dict with key of column name :)
-        return [dict(zip(data_names, s)) for s in table_data]
+        if data_names is not None and table_data is not None:
+            return [dict(zip(data_names, s)) for s in table_data]
+        else:
+            return []
