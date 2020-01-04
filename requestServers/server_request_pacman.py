@@ -5,20 +5,24 @@ from helpers import Helpers as Help
 
 class ServerRequest_Pacman( server_request.ServerRequest ):
 
-
-
     def __init__(self):
 
         # make sure that the database and required tables have been created
         self.database = sql.sql_query("pacman")
 
-        # set up leader board
+        # setup leader board table
         lb_table_cols = ["username", "ghost_killed", "pills_collected", "level",
                          "time", "score", "level_mode", "date_submitted"]
 
         lb_col_data_types = ["VARCHAR", "INT", "INT", "INT", "FLOAT", "INT", "VARCHAR", "INT"]
 
         self.database.add_table("leaderboard", lb_table_cols, lb_col_data_types)
+
+        # setup game setting table
+        gs_table_cols = ["setting_name", "number_value", "string_value"]
+        gs_col_data_types = ["VARCHAR", "FLOAT", "VARCHAR"]
+
+        self.database.add_table("game_settings", gs_table_cols, gs_col_data_types)
 
     def post_request(self, page_request, query, data):
 
