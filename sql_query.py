@@ -2,6 +2,7 @@ import sqlite3
 from Globals import Global
 from Globals import GlobalConfig as Config
 import os, os.path
+import re  # regex
 
 class sql_query():
 
@@ -57,6 +58,9 @@ class sql_query():
         :param table_name:  table to get column data from
         :return:            [(col_id, col_name, type, can_be_null, default_value, part_of_primary_key)...]
         """
+
+        table_name = re.sub("\s", "_", table_name ) # replace white space with underscores
+
         query = "pragma table_info("+table_name+")"
 
         self.connect_db()
@@ -71,6 +75,9 @@ class sql_query():
 
     def get_table_column_names(self, table_name):
         """ Gets a list of all column names (in order)"""
+
+        table_name = re.sub("\s", "_", table_name)  # replace white space with underscores
+
         return [u[1] for u in self.get_table_columns(table_name)]
 
     def table_exist(self, table_name, close_connect = True):
@@ -78,6 +85,8 @@ class sql_query():
         query = "SELECT name FROM sqlite_master WHERE type='table' AND name=? "
 
         self.connect_db()
+
+        table_name = re.sub("\s", "_", table_name)  # replace white space with underscores
 
         self.cursor.execute(query, (table_name,))
         row_count = len( self.cursor.fetchall() )
@@ -99,11 +108,12 @@ class sql_query():
         :param data_lengths:    list of max column length (must match col names or none)
         :param default_values:  list of default values for column (must match col names or none)
         """
+
+        table_name = re.sub("\s", "_", table_name)  # replace white space with underscores
+
         if self.table_exist( table_name ):
             print("Error: can not create table(", table_name, "), already exist")
             return 404, "table already exist"
-
-        table_name = table_name.replace(" ", "_")
 
         query = "CREATE TABLE "+table_name
         columns = []
@@ -111,11 +121,14 @@ class sql_query():
         for i, v in enumerate(col_names):
             data_l = ""
             default_v = ""
+
             if data_lengths is not None and data_lengths[i] != "":
                 data_l = "("+data_lengths[i]+")"
 
             if default_values is not None and default_values[i] != "":
                 default_v = ' DEFAULT "'+default_values[i]+'"'
+
+            v = re.sub("\s", "_", v )  # replace white space with underscores
 
             columns.append( v +" "+ data_types[i] + data_l + default_v )
 
@@ -275,3 +288,4 @@ class sql_query():
             string = string[:-len(join)]
 
         return string
+
