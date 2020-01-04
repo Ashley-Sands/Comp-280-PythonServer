@@ -56,7 +56,7 @@ class ServerRequest_Pacman( server_request.ServerRequest ):
         values = [("ghost_start_speed", 500),
                   ("ghost_speed_incress", 25),
                   ("start_ammo", 100),
-                  ("start_lives", 10),
+                  ("start_lives", 3),
                   ("pill_respwan_time", 45),
                   ("powerPill_respwan_time", 60),
                   ("gun_clip_size", 10)]
