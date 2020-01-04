@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="044511c4-2dcb-4859-9534-58b30bfe7690" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/sql_query.py" afterDir="false" />
-    </list>
+    <list default="true" id="044511c4-2dcb-4859-9534-58b30bfe7690" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,20 +211,6 @@
       <workItem from="1571908204063" duration="6234000" />
       <workItem from="1572013252960" duration="1151000" />
       <workItem from="1575636964897" duration="6664000" />
-    </task>
-    <task id="LOCAL-00039" summary="added remove row from table">
-      <created>1575728984477</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1575728984477</updated>
-    </task>
-    <task id="LOCAL-00040" summary="added insert row">
-      <created>1575733595819</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1575733595819</updated>
     </task>
     <task id="LOCAL-00041" summary="Changed GET to always have status 200&#10;&#10;see json response for status">
       <created>1575836128674</created>
@@ -558,7 +541,21 @@
       <option name="project" value="LOCAL" />
       <updated>1578111997613</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="Fixed error when column name begins with a number">
+      <created>1578112368340</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1578112368341</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Updated build">
+      <created>1578112494808</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1578112494808</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TodoView">
@@ -587,8 +584,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added get leaderboard and submit score" />
-    <MESSAGE value="Added order support for select from table" />
     <MESSAGE value="fixed typo and added to panman server" />
     <MESSAGE value="Fixed lost of last 2 chars of column names" />
     <MESSAGE value="corrected order" />
@@ -612,7 +607,9 @@
     <MESSAGE value="fixed typo in default start lives" />
     <MESSAGE value="Updated Build" />
     <MESSAGE value="fixed error when table name or colum name has white space in it" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed error when table name or colum name has white space in it" />
+    <MESSAGE value="Fixed error when column name begins with a number" />
+    <MESSAGE value="Updated build" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated build" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Comp_280__2_$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1572014137730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
