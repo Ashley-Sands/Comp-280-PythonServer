@@ -34,13 +34,16 @@ class sql_query():
 
     def connect_db(self):
         """ Connect to the SQLite DB, creates new if not exist """
+
+        if self.connection is not None:
+            return
+
         if self.using_mysql:
             self.connection, self.cursor = mysql_helpers.MySqlHelpers.mysql_connect(
                                                                                     Config.get("mysql_host"),
                                                                                     Config.get("mysql_user"),
                                                                                     Config.get("mysql_pass"),
                                                                                     self.db_name )
-
         else:
             self.connection = sqlite3.connect( Config.get("db_root")+self.db_name )
             self.cursor = self.connection.cursor()
@@ -59,9 +62,25 @@ class sql_query():
 
     def close_db(self, commit = True):
         """Closes the db connection"""
-        if commit:
+
+        # check that the connection exists
+        if self.connection is None and self.cursor is None:
+            return
+
+        if not self.using_mysql and commit:
             self.connection.commit()
+
+        # in mysql we must close the cursor and connection
+        if self.using_mysql:
+            self.cursor.close()
+
         self.connection.close()
+
+        # reset the connection to insure we established a new connection
+        self.connection = None
+        self.cursor = None
+
+        print("SQL connection closed")
 
     def get_all_tables(self):
         """ Gets an list of tuples with all table names in database
