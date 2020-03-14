@@ -3,7 +3,8 @@
 ### Running the server
 Run '/main/build.exe' to run the standalone build of the http server  
 The server has been build using PyInstaller 3.5  
-To run the web server from source run ```main_server.py``` using python 3.7 (no modules required)  
+To run the web server from source run ```main_server.py``` using python 3.7  
+With mysql-connector installed (use master branch if you only need sqlite support)
 
 ### Extending the server
 
@@ -27,9 +28,9 @@ and the server_request instances.
 **DONE!**
 
 #### Other 
-see ```sql_query.py``` for sql_lite helper functions; or  
-checkout to the 'mysql_support' branch for use with MYSQL databases  
-(MYSQL Support has **NOT** been tested with the current included modules)
+see ```sql_query.py``` for MYSQL/SQLite helper functions; or  
+checkout to the 'master' branch if only requiring SQLite support  
+(MYSQL Support has **NOT** been tested with ```AMSqlite Explorer```)
 see ```helpers.py``` for general helper functions  
 host, port and database_root can be changed at the top of main server  
 ```
