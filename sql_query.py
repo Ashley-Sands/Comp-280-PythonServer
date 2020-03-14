@@ -87,16 +87,18 @@ class sql_query():
 
         :return: list of table names [table_name, ...]
         """
-        query = "SELECT name FROM sqlite_master WHERE type='table'"
+        if self.using_mysql:
+            query = "SHOW TABLES"
+        else:
+            query = "SELECT name FROM sqlite_master WHERE type='table'"
 
         self.connect_db()
 
         self.cursor.execute(query)
         data = self.cursor.fetchall()
 
-        # clean the data removing the inner list of 1 element
-        for i in range (len(data)):
-            data[i] = data[i][0]
+        # get only the table names
+        data = [ r[0] for r in data ]
 
         self.close_db()
 
