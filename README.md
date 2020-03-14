@@ -27,7 +27,9 @@ and the server_request instances.
 **DONE!**
 
 #### Other 
-see ```sql_query.py``` for sql_lite helper functions  
+see ```sql_query.py``` for sql_lite helper functions; or  
+checkout to the 'mysql_support' branch for use with MYSQL databases
+(MYSQL Support has **NOT** been tested with the current included modules)
 see ```helpers.py``` for general helper functions  
 host, port and database_root can be changed at the top of main server  
 ```
