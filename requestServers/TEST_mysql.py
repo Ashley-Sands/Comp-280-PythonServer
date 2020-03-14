@@ -7,3 +7,4 @@ class TEST_mysql( server_request.ServerRequest  ):
 
         self.database = sql.sql_query("py_test", using_mysql=True)
         self.database.connect_db()
+        self.database.destroy_database()

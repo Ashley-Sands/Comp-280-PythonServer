@@ -50,8 +50,11 @@ class sql_query():
         if not self.using_mysql:
             if os.path.exists( Config.get("db_root")+self.db_name ):
                 os.remove( Config.get("db_root")+self.db_name )
-            else:
-                print( "Currently does not support destroying database in MYSQL" )
+        else:
+           mysql_helpers.MySqlHelpers.mysql_destroy_database( Config.get("mysql_host"),
+                                                              Config.get("mysql_user"),
+                                                              Config.get("mysql_pass"),
+                                                              self.db_name )
 
 
     def close_db(self, commit = True):
