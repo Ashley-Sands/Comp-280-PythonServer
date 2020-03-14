@@ -1,4 +1,5 @@
 import sqlite3
+import mysql.connector
 from Globals import Global
 from Globals import GlobalConfig as Config
 import os, os.path
@@ -6,19 +7,41 @@ import re  # regex
 
 class sql_query():
 
-    def __init__(self, db_name):
+    def __init__(self, db_name, using_mysql=False):
 
-        # make sure that the db root is set
-        if not Config.is_set( "db_root" ):
-            Config.set("db_root", "")
-
+        self.using_mysql = using_mysql
         self.db_name = db_name
         self.connection = None
         self.cursor = None
 
+        # make sure that the db root is set
+        # if using MYSQL support, db_root is the host of the db
+        if not Config.is_set( "db_root" ):
+            if self.using_mysql:
+                Config.set("db_root", "localhost")
+            else:
+                Config.set("db_root", "")
+
+        # if using MYSQL make sure that the user has set a username and password!
+        if self.using_mysql:
+            if not Config.is_set( "db_user" ):
+                Config.set("root")
+
+            if not Config.is_set( "db_pass" ):
+                Config.set("")  # please set a password in some other file (that is not synced with public version control)
+
+
     def connect_db(self):
         """ Connect to the SQLite DB, creates new if not exist """
-        self.connection = sqlite3.connect(Config.get("db_root")+self.db_name)
+        if self.using_mysql:
+            mysql.connector.connect(
+                host=Config.get("db_root"),
+                user=Config.get("db_user"),
+                passwd=Config.get("db_pass")
+            )
+        else:
+            self.connection = sqlite3.connect( Config.get("db_root")+self.db_name )
+
         self.cursor = self.connection.cursor()
 
     def destroy_database(self):

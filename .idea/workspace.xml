@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="044511c4-2dcb-4859-9534-58b30bfe7690" name="Default Changelist" comment="" />
+    <list default="true" id="044511c4-2dcb-4859-9534-58b30bfe7690" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/sql_query.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +40,7 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -64,7 +67,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.PyInstaller_main_server">
+  <component name="RunManager" selected="Python.main_server">
     <configuration name="Globals" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Comp-280 (2)" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -211,13 +214,6 @@
       <workItem from="1571908204063" duration="6234000" />
       <workItem from="1572013252960" duration="1151000" />
       <workItem from="1575636964897" duration="6664000" />
-    </task>
-    <task id="LOCAL-00041" summary="Changed GET to always have status 200&#10;&#10;see json response for status">
-      <created>1575836128674</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1575836128674</updated>
     </task>
     <task id="LOCAL-00042" summary="removed code that does nothing :)">
       <created>1575836232488</created>
@@ -555,7 +551,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578112494808</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="Updated readme for mysql support">
+      <created>1584220172601</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1584220172602</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TodoView">
@@ -584,7 +587,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed typo and added to panman server" />
     <MESSAGE value="Fixed lost of last 2 chars of column names" />
     <MESSAGE value="corrected order" />
     <MESSAGE value="added get settings" />
@@ -609,7 +611,8 @@
     <MESSAGE value="fixed error when table name or colum name has white space in it" />
     <MESSAGE value="Fixed error when column name begins with a number" />
     <MESSAGE value="Updated build" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated build" />
+    <MESSAGE value="Updated readme for mysql support" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated readme for mysql support" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Comp_280__2_$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1572014137730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
