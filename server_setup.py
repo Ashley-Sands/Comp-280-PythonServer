@@ -1,5 +1,6 @@
 from requestServers import server_request_amsql_explorer as amsql_explorer
 from requestServers import server_request_pacman
+from requestServers import TEST_mysql
 
 class ServerSetup:
 
@@ -16,6 +17,12 @@ class ServerSetup:
         pacman = server_request_pacman.ServerRequest_Pacman()
         pacman.force_200_status = True
         self.add_callback("pacman", pacman)
+
+        # start TEST mysql
+        test_sql = TEST_mysql.TEST_mysql()
+        pacman.force_200_status = True
+        self.add_callback("testSQL", test_sql)
+
 
     def add_callback(self, root_dir, _server_request):
         """ Adds the get and post function to the callbacks on server

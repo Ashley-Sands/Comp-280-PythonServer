@@ -1,5 +1,6 @@
 import sqlite3
 import mysql.connector
+import mysql_helpers
 from Globals import Global
 from Globals import GlobalConfig as Config
 import os, os.path
@@ -11,43 +12,47 @@ class sql_query():
 
         self.using_mysql = using_mysql
         self.db_name = db_name
+
         self.connection = None
         self.cursor = None
 
         # make sure that the db root is set
-        # if using MYSQL support, db_root is the host of the db
         if not Config.is_set( "db_root" ):
-            if self.using_mysql:
-                Config.set("db_root", "localhost")
-            else:
-                Config.set("db_root", "")
+            Config.set("db_root", "")
 
-        # if using MYSQL make sure that the user has set a username and password!
+        # if using MYSQL make sure that the user has set a host, username and password!
         if self.using_mysql:
-            if not Config.is_set( "db_user" ):
-                Config.set("root")
+            if not Config.is_set( "mysql_host"):
+                Config.set("mysql_host", "localhost")
 
-            if not Config.is_set( "db_pass" ):
-                Config.set("")  # please set a password in some other file (that is not synced with public version control)
+            if not Config.is_set( "mysql_user" ):
+                Config.set("mysql_user", "root")
+
+            if not Config.is_set( "mysql_pass" ):
+                Config.set("mysql_pass", "")  # please set a password in some other file (that is not synced with public version control)
 
 
     def connect_db(self):
         """ Connect to the SQLite DB, creates new if not exist """
         if self.using_mysql:
-            mysql.connector.connect(
-                host=Config.get("db_root"),
-                user=Config.get("db_user"),
-                passwd=Config.get("db_pass")
-            )
+            self.connection, self.cursor = mysql_helpers.MySqlHelpers.mysql_connect(
+                                                                                    Config.get("mysql_host"),
+                                                                                    Config.get("mysql_user"),
+                                                                                    Config.get("mysql_pass"),
+                                                                                    self.db_name )
+
         else:
             self.connection = sqlite3.connect( Config.get("db_root")+self.db_name )
-
-        self.cursor = self.connection.cursor()
+            self.cursor = self.connection.cursor()
 
     def destroy_database(self):
 
-        if os.path.exists( Config.get("db_root")+self.db_name ):
-            os.remove( Config.get("db_root")+self.db_name )
+        if not self.using_mysql:
+            if os.path.exists( Config.get("db_root")+self.db_name ):
+                os.remove( Config.get("db_root")+self.db_name )
+            else:
+                print( "Currently does not support destroying database in MYSQL" )
+
 
     def close_db(self, commit = True):
         """Closes the db connection"""
