@@ -69,7 +69,8 @@ class sql_query():
         if self.connection is None and self.cursor is None:
             return
 
-        if not self.using_mysql and commit:
+        #if not self.using_mysql and commit:
+        if commit:
             self.connection.commit()
 
         # in mysql we must close the cursor and connection
@@ -236,13 +237,19 @@ class sql_query():
 
         self.connect_db()
 
+        if self.using_mysql:
+            val_str = "%s"
+        else:
+            val_str = "?"
+
         col_name_str = ', '.join(value_columns)
-        col_value_str = ', '.join(["?"] * len(value_data))
+        col_value_str = ', '.join([val_str] * len(value_data))
 
         query = "INSERT INTO " + table_name + " (" + col_name_str + ") VALUES (" + col_value_str + ") "
-        print(query)
+        print(query, value_data)
         if Global.DEBUG:
             print("query: ", query, "Data", value_data)
+
         self.cursor.execute(query, value_data)
 
         self.close_db()

@@ -18,9 +18,10 @@ class TEST_mysql( server_request.ServerRequest  ):
         table_not_exist = self.database.table_exist("test__")
 
         self.database.add_table("test_add_table", ["col_1", "col_2"], ["INT UNSIGNED NULL AUTO_INCREMENT KEY", "INT NOT NULL"])
-        self.database.drop_table("test_add_table")
+        self.database.insert_row("test_add_table", ["col_1", "col_2"], ["NULL", 5432])
+        #self.database.drop_table("test_add_table")
 
-
+        '''
         self.litedb.add_table("test_lite", ["a", "b"], ["INT", "INT"])
         self.litedb.add_table("test_lite2", ["a", "b"], ["INT", "INT"])
 
@@ -31,10 +32,10 @@ class TEST_mysql( server_request.ServerRequest  ):
         table_not_exist_l = self.litedb.table_exist("test__")
         self.litedb.add_table("test_add_table", ["col_1", "col_2"], ["INT", "INT"])
         self.litedb.drop_table("test_add_table")
-
+        '''
         # destroy and close
         #self.database.destroy_database()
         #self.database.close_db()
 
         print(tables, cols, cols_names,  table_exist, table_not_exist)
-        print("lite:", tables_lite, cols_lite, cols_names_lite, table_exist_l, table_not_exist_l)
+        #print("lite:", tables_lite, cols_lite, cols_names_lite, table_exist_l, table_not_exist_l)
