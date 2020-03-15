@@ -19,6 +19,13 @@ class TEST_mysql( server_request.ServerRequest  ):
 
         self.database.add_table("test_add_table", ["col_1", "col_2"], ["INT UNSIGNED NULL AUTO_INCREMENT KEY", "INT NOT NULL"])
         self.database.insert_row("test_add_table", ["col_1", "col_2"], ["NULL", 5432])
+        self.database.insert_row("test_add_table", ["col_1", "col_2"], ["NULL", 5433])
+        self.database.insert_row("test_add_table", ["col_1", "col_2"], ["NULL", 5434])
+        self.database.remove_row("test_add_table", ["col_2"], [5432])
+        table_Select = self.database.select_from_table("test_add_table", ["*"], ["col_2"], [5433])
+        self.database.update_row("test_add_table", ["col_2"], [33], ["col_2"], [5434])
+        table_Select_2 = self.database.select_from_table("test_add_table", ["*"], ["col_2"], [33])
+
         #self.database.drop_table("test_add_table")
 
         '''
@@ -38,4 +45,6 @@ class TEST_mysql( server_request.ServerRequest  ):
         #self.database.close_db()
 
         print(tables, cols, cols_names,  table_exist, table_not_exist)
+        print(table_Select)
+        print(table_Select_2)
         #print("lite:", tables_lite, cols_lite, cols_names_lite, table_exist_l, table_not_exist_l)

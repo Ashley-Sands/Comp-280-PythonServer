@@ -349,9 +349,14 @@ class sql_query():
     def sql_string_builder(self, column_names, join, add_equals=True):
         """ build a list of column names in to sql query string for set and where ect... """
 
+        if self.using_mysql:
+            str_val = "%s"
+        else:
+            str_val = "?"
+
         string = ""
         if add_equals is True:
-            equals = "=? "
+            equals = "={0} ".format(str_val)
         else:
             equals = " "
 
