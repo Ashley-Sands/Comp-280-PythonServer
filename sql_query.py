@@ -148,7 +148,7 @@ class sql_query():
 
         tables = self.get_all_tables()
 
-        return int(table_name in tables)
+        return table_name in tables
 
     ''' Check if table exist else creats it.
     @:param table_name: Name of the table to be created.
@@ -180,7 +180,10 @@ class sql_query():
                 data_l = "("+data_lengths[i]+")"
 
             if default_values is not None and default_values[i] != "":
-                default_v = ' DEFAULT "'+default_values[i]+'"'
+                if self.using_mysql:
+                    default_v = '"'+default_values[i]+'"'
+                else:
+                    default_v = ' DEFAULT "'+default_values[i]+'"'
 
             v = re.sub("\s", "_", v )  # replace white space with underscores
 
@@ -201,7 +204,7 @@ class sql_query():
 
         self.connect_db()
 
-        query += "("+columns+")"
+        query += " ("+columns+")"
         print(query)
         self.cursor.execute(query)
 
@@ -213,7 +216,7 @@ class sql_query():
     def drop_table(self, table_name):
         """drops table from database"""
         if not self.table_exist( table_name ):
-            print("Error: can not drop table, that does not already exist")
+            print("Error: can not drop", table_name,"table, does not already exist")
             return
 
         self.connect_db()
@@ -222,6 +225,8 @@ class sql_query():
         self.cursor.execute(query)
 
         self.close_db()
+
+        print(table_name, "Droped")
 
     def insert_row(self, table_name, value_columns, value_data):
         """Inserts rot into table"""
