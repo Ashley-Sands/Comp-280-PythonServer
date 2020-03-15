@@ -13,15 +13,22 @@ class TEST_mysql( server_request.ServerRequest  ):
 
         tables = self.database.get_all_tables()
         cols = self.database.get_table_columns("test")
+        cols_names = self.database.get_table_column_names("test")
+        table_exist = self.database.table_exist("test")
+        table_not_exist = self.database.table_exist("test__")
 
         self.litedb.add_table("test_lite", ["a", "b"], ["INT", "INT"])
         self.litedb.add_table("test_lite2", ["a", "b"], ["INT", "INT"])
+
         tables_lite = self.litedb.get_all_tables()
         cols_lite = self.litedb.get_table_columns("test_lite")
+        cols_names_lite = self.litedb.get_table_column_names("test_lite")
+        table_exist_l = self.litedb.table_exist("test_lite")
+        table_not_exist_l = self.litedb.table_exist("test__")
 
         # destroy and close
         #self.database.destroy_database()
         #self.database.close_db()
 
-        print(tables, cols)
-        print("lite:", tables_lite, cols_lite)
+        print(tables, cols, cols_names,  table_exist, table_not_exist)
+        print("lite:", tables_lite, cols_lite, cols_names_lite, table_exist_l, table_not_exist_l)

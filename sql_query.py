@@ -5,6 +5,7 @@ from Globals import Global
 from Globals import GlobalConfig as Config
 import os, os.path
 import re  # regex
+import random
 
 class sql_query():
 
@@ -31,6 +32,7 @@ class sql_query():
             if not Config.is_set( "mysql_pass" ):
                 Config.set("mysql_pass", "")  # please set a password in some other file (that is not synced with public version control)
 
+            print( "mysql details:", Config.get("mysql_host"), Config.get("mysql_user"), "*" * random.randint( 6, 16 ), db_name )
 
     def connect_db(self):
         """ Connect to the SQLite DB, creates new if not exist """
@@ -80,9 +82,7 @@ class sql_query():
         self.connection = None
         self.cursor = None
 
-        print("SQL connection closed")
-
-    def get_all_tables(self):
+    def get_all_tables(self, close_conn = True):
         """ Gets an list of tuples with all table names in database
 
         :return: list of table names [table_name, ...]
@@ -100,7 +100,8 @@ class sql_query():
         # get only the table names
         data = [ r[0] for r in data ]
 
-        self.close_db()
+        if close_conn:
+            self.close_db()
 
         return data
 
@@ -121,8 +122,12 @@ class sql_query():
 
         self.connect_db()
 
-        self.cursor.execute(query)
-        data = self.cursor.fetchall()
+        try:
+            self.cursor.execute(query)
+            data = self.cursor.fetchall()
+        except Exception as e:
+            print(e)
+            data = []
 
         self.close_db()
 
@@ -133,23 +138,17 @@ class sql_query():
 
         table_name = re.sub("\s", "_", table_name)  # replace white space with underscores
 
-        return [u[1] for u in self.get_table_columns(table_name)]
+        if self.using_mysql:
+            return [u[0] for u in self.get_table_columns(table_name)]
+        else:
+            return [u[1] for u in self.get_table_columns(table_name)]
 
     def table_exist(self, table_name, close_connect = True):
         """Check if table exist in database"""
-        query = "SELECT name FROM sqlite_master WHERE type='table' AND name=? "
 
-        self.connect_db()
+        tables = self.get_all_tables()
 
-        table_name = re.sub("\s", "_", table_name)  # replace white space with underscores
-
-        self.cursor.execute(query, (table_name,))
-        row_count = len( self.cursor.fetchall() )
-
-        if close_connect:
-            self.close_db()
-
-        return row_count
+        return int(table_name in tables)
 
     ''' Check if table exist else creats it.
     @:param table_name: Name of the table to be created.

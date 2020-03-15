@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="044511c4-2dcb-4859-9534-58b30bfe7690" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysql_helpers.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysql_helpers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requestServers/TEST_mysql.py" beforeDir="false" afterPath="$PROJECT_DIR$/requestServers/TEST_mysql.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sql_query.py" beforeDir="false" afterPath="$PROJECT_DIR$/sql_query.py" afterDir="false" />
     </list>
@@ -215,13 +216,6 @@
       <workItem from="1571908204063" duration="6234000" />
       <workItem from="1572013252960" duration="1151000" />
       <workItem from="1575636964897" duration="6664000" />
-    </task>
-    <task id="LOCAL-00047" summary="mived server_request into there own folder">
-      <created>1577204585732</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1577204585732</updated>
     </task>
     <task id="LOCAL-00048" summary="put globals pack&#10;&#10;py charm decided to removed it :(">
       <created>1577204707448</created>
@@ -559,7 +553,14 @@
       <option name="project" value="LOCAL" />
       <updated>1584230007547</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="added get table columes for mysql">
+      <created>1584230770329</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1584230770329</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TodoView">
@@ -588,7 +589,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="updated doc strings" />
     <MESSAGE value="added server_setup so all the directories are setup in a separate file" />
     <MESSAGE value="added add_callback to server_setup to make life a lil easier" />
     <MESSAGE value="removed old test" />
@@ -613,7 +613,8 @@
     <MESSAGE value="added mysql destroy db support" />
     <MESSAGE value="added close db for mysql" />
     <MESSAGE value="added get all tables for my sql" />
-    <option name="LAST_COMMIT_MESSAGE" value="added get all tables for my sql" />
+    <MESSAGE value="added get table columes for mysql" />
+    <option name="LAST_COMMIT_MESSAGE" value="added get table columes for mysql" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Comp_280__2_$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1572014137730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

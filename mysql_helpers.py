@@ -1,4 +1,3 @@
-import random
 
 class MySqlHelpers:
     import mysql.connector as MYSQL
@@ -25,8 +24,6 @@ class MySqlHelpers:
         so if the db does not exist it is created!
         :return: the connection to the database, and the cursor. None if error
         """
-
-        print("mysql details: ", host, user, "*"*random.randint(6, 16), db_name)
 
         # check that we can connect to the database.
         db_connection, db_cursor = MySqlHelpers._connect(host, user, passwd)
