@@ -216,20 +216,6 @@
       <workItem from="1572013252960" duration="1151000" />
       <workItem from="1575636964897" duration="6664000" />
     </task>
-    <task id="LOCAL-00045" summary="added new table and improved sql_query new table :D">
-      <created>1576105753194</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1576105753194</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Fixed all the broken things :D">
-      <created>1576106825297</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1576106825297</updated>
-    </task>
     <task id="LOCAL-00047" summary="mived server_request into there own folder">
       <created>1577204585732</created>
       <option name="number" value="00047" />
@@ -559,7 +545,21 @@
       <option name="project" value="LOCAL" />
       <updated>1584226798978</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="added close db for mysql">
+      <created>1584229990773</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1584229990773</updated>
+    </task>
+    <task id="LOCAL-00095" summary="added get all tables for my sql">
+      <created>1584230007547</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1584230007547</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TodoView">
@@ -588,8 +588,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed typo" />
-    <MESSAGE value="removed old testing bits" />
     <MESSAGE value="updated doc strings" />
     <MESSAGE value="added server_setup so all the directories are setup in a separate file" />
     <MESSAGE value="added add_callback to server_setup to make life a lil easier" />
@@ -613,7 +611,9 @@
     <MESSAGE value="Added mysql setup and connection" />
     <MESSAGE value="added mysql connect, to be simuler to sqlite.connect" />
     <MESSAGE value="added mysql destroy db support" />
-    <option name="LAST_COMMIT_MESSAGE" value="added mysql destroy db support" />
+    <MESSAGE value="added close db for mysql" />
+    <MESSAGE value="added get all tables for my sql" />
+    <option name="LAST_COMMIT_MESSAGE" value="added get all tables for my sql" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Comp_280__2_$Unnamed.coverage" NAME="Unnamed Coverage Results" MODIFIED="1572014137730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

@@ -108,18 +108,21 @@ class sql_query():
         """ Gets a list of tuples with all column data for table
 
         :param table_name:  table to get column data from
-        :return:            [(col_id, col_name, type, can_be_null, default_value, part_of_primary_key)...]
+        :return:            (sqlite) [(col_id, col_name, type, can_be_null, default_value, part_of_primary_key)...]
+                            (mysql) [(type, null, key, default, extra)...]
         """
 
         table_name = re.sub("\s", "_", table_name ) # replace white space with underscores
 
-        query = "pragma table_info("+table_name+")"
+        if self.using_mysql:
+            query = "DESCRIBE "+table_name
+        else:
+            query = "pragma table_info("+table_name+")"
 
         self.connect_db()
 
         self.cursor.execute(query)
         data = self.cursor.fetchall()
-        row_count = len(data)
 
         self.close_db()
 
