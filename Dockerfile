@@ -6,9 +6,6 @@ EXPOSE 80
 
 ENV PYTHONPATH "${PYTHONPATH}:/usr/src/app"
 
-COPY py_requirements.txt ./
-RUN pip install --no-cache-dir -r py_requirements.txt
-
 COPY ./ ./
 
 CMD [ "python", "-u", "./main_server.py" ]
