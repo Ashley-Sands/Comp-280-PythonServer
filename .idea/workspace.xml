@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="044511c4-2dcb-4859-9534-58b30bfe7690" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/requestServers/server_trigger_webhook_event.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server_setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/server_setup.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +68,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.PyInstaller_main_server">
+  <component name="RunManager" selected="Python.main_server">
     <configuration name="Globals" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Comp-280 (2)" />
       <option name="INTERPRETER_OPTIONS" value="" />
