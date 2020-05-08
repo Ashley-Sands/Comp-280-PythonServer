@@ -5,8 +5,8 @@ from helpers import Helpers
 from Globals import Global, GlobalConfig
 
 # config
-GlobalConfig.set("host", "127.0.0.1")
-GlobalConfig.set("port", 8000)
+GlobalConfig.set("host", "0.0.0.0")
+GlobalConfig.set("port", 80)
 GlobalConfig.set("db_root", "databases/")
 
 class Server(BaseHTTPRequestHandler):
